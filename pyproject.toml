@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "odyssey"
+version = "0.1.0"
+description = ""
+authors = ["John Halazonetis <john.halazonetis@scandit.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
