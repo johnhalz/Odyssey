@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'odyssey_production.apps.OdysseyProductionConfig',
+    'odyssey_production.apps.OdysseyProductionConfig'
 ]
 
 MIDDLEWARE = [
