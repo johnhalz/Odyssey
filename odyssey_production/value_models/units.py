@@ -7,6 +7,9 @@ class UnitType(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    class Meta:
+        verbose_name_plural = 'Unit Types'
+
 
 class Unit(models.Model):
     name = models.CharField(max_length=30)
