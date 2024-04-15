@@ -1,0 +1,1365 @@
+[
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 1,
+        "fields": {
+            "name": "Radian",
+            "plural_name": "Radians",
+            "type": 1,
+            "base_unit": null,
+            "abbreviation": "rad"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 2,
+        "fields": {
+            "name": "Degree",
+            "plural_name": "Degrees",
+            "space_after_value": false,
+            "type": 1,
+            "base_unit": 1,
+            "abbreviation": "°",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 3.1415926535,
+            "denominator": 180
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 3,
+        "fields": {
+            "name": "Revolution",
+            "plural_name": "Revolutions",
+            "type": 1,
+            "base_unit": 1,
+            "abbreviation": "revolution",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 6.2831853072,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 4,
+        "fields": {
+            "name": "Square Meter",
+            "plural_name": "Square Meters",
+            "type": 2,
+            "base_unit": null,
+            "abbreviation": "m²"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 5,
+        "fields": {
+            "name": "Square Centimeter",
+            "plural_name": "Square Centimeters",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "cm²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.0001,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 6,
+        "fields": {
+            "name": "Square Millimeter",
+            "plural_name": "Square Millimeters",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "mm²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.000001,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 7,
+        "fields": {
+            "name": "Square Micrometer",
+            "plural_name": "Square Micrometers",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "µm²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.000001,
+            "denominator": 1000000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 8,
+        "fields": {
+            "name": "Square Inch",
+            "plural_name": "Square Inches",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "in²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.00064516,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 9,
+        "fields": {
+            "name": "Square Foot",
+            "plural_name": "Square Feet",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "ft²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.09290304,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 10,
+        "fields": {
+            "name": "Square Kilometer",
+            "plural_name": "Square Kilometers",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "km²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 11,
+        "fields": {
+            "name": "Square Mile",
+            "plural_name": "Square Miles",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "mi²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 2589988.1103,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 12,
+        "fields": {
+            "name": "Acre",
+            "plural_name": "Acres",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "ac",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 4046.8564224,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 13,
+        "fields": {
+            "name": "Hectare",
+            "plural_name": "Hectares",
+            "type": 2,
+            "base_unit": 4,
+            "abbreviation": "ha",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 10000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 14,
+        "fields": {
+            "name": "Kilogram per Cubic Meter",
+            "plural_name": "Kilograms per Cubic Meter",
+            "type": 3,
+            "base_unit": null,
+            "abbreviation": "kg/m³"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 15,
+        "fields": {
+            "name": "Gram per Cubic Centimeter",
+            "plural_name": "Grams per Cubic Centimeter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "g/cm³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 16,
+        "fields": {
+            "name": "Kilogram per Cubic Centimeter",
+            "plural_name": "Kilograms per Cubic Centimeter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "kg/cm³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 17,
+        "fields": {
+            "name": "Gram per Cubic Meter",
+            "plural_name": "Grams per Cubic Meter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "g/m³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.001,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 18,
+        "fields": {
+            "name": "Gram per Cubic Millimeter",
+            "plural_name": "Grams per Cubic Millimeter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "g/mm³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 19,
+        "fields": {
+            "name": "Kilogram per Liter",
+            "plural_name": "Kilograms per Liter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "kg/L",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 20,
+        "fields": {
+            "name": "Gram per Liter",
+            "plural_name": "Grams per Liter",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "g/L",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 21,
+        "fields": {
+            "name": "Pound per Cubic Inch",
+            "plural_name": "Pounds per Cubic Inch",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "lb/in³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 27679.90471,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 22,
+        "fields": {
+            "name": "Pound per Cubic Foot",
+            "plural_name": "Pounds per Cubic Foot",
+            "type": 3,
+            "base_unit": 14,
+            "abbreviation": "lb/ft³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 16.018463374,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 23,
+        "fields": {
+            "name": "Joule",
+            "plural_name": "Joules",
+            "type": 4,
+            "base_unit": null,
+            "abbreviation": "J"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 24,
+        "fields": {
+            "name": "Kilojoule",
+            "plural_name": "Kilojoules",
+            "type": 4,
+            "base_unit": 23,
+            "abbreviation": "kJ",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 25,
+        "fields": {
+            "name": "Kilowatt-Hour",
+            "plural_name": "Kilowatt-Hours",
+            "type": 4,
+            "base_unit": 23,
+            "abbreviation": "kWh",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 3600000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 26,
+        "fields": {
+            "name": "Watt-Hour",
+            "plural_name": "Watt-Hours",
+            "type": 4,
+            "base_unit": 23,
+            "abbreviation": "Wh",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 3600,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 27,
+        "fields": {
+            "name": "Megajoule",
+            "plural_name": "Megajoules",
+            "type": 4,
+            "base_unit": 23,
+            "abbreviation": "MJ",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 28,
+        "fields": {
+            "name": "Watt-Second",
+            "plural_name": "Watt-Seconds",
+            "type": 4,
+            "base_unit": 23,
+            "abbreviation": "Ws",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 29,
+        "fields": {
+            "name": "Newton",
+            "plural_name": "Newtons",
+            "type": 5,
+            "base_unit": null,
+            "abbreviation": "N"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 30,
+        "fields": {
+            "name": "Kilonewton",
+            "plural_name": "Kilonewtons",
+            "type": 5,
+            "base_unit": 29,
+            "abbreviation": "kN",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 31,
+        "fields": {
+            "name": "Millinewton",
+            "plural_name": "Millinewtons",
+            "type": 5,
+            "base_unit": 29,
+            "abbreviation": "mN",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.001,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 32,
+        "fields": {
+            "name": "Meter",
+            "plural_name": "Meters",
+            "type": 6,
+            "base_unit": null,
+            "abbreviation": "m"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 33,
+        "fields": {
+            "name": "Kilometer",
+            "plural_name": "Kilometers",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "km",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 34,
+        "fields": {
+            "name": "Centimeter",
+            "plural_name": "Centimeters",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "cm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 100
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 35,
+        "fields": {
+            "name": "Millimeter",
+            "plural_name": "Millimeters",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "mm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 36,
+        "fields": {
+            "name": "Micrometer",
+            "plural_name": "Micrometers",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "µm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 37,
+        "fields": {
+            "name": "Mile",
+            "plural_name": "Miles",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "mi",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1609.344,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 38,
+        "fields": {
+            "name": "Yard",
+            "plural_name": "Yards",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "yd",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.9144,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 39,
+        "fields": {
+            "name": "Foot",
+            "plural_name": "Feet",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "ft",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.3048,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 40,
+        "fields": {
+            "name": "Inch",
+            "plural_name": "Inches",
+            "type": 6,
+            "base_unit": 32,
+            "abbreviation": "in",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.0254,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 41,
+        "fields": {
+            "name": "Lux",
+            "plural_name": "Lux",
+            "type": 7,
+            "base_unit": null,
+            "abbreviation": "lx"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 42,
+        "fields": {
+            "name": "Nox",
+            "plural_name": "Nox",
+            "type": 7,
+            "base_unit": 41,
+            "abbreviation": "nox",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.001,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 43,
+        "fields": {
+            "name": "Watt",
+            "plural_name": "Watts",
+            "type": 8,
+            "base_unit": null,
+            "abbreviation": "W"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 44,
+        "fields": {
+            "name": "Megawatt",
+            "plural_name": "Megawatt",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "MW",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 45,
+        "fields": {
+            "name": "Kilowatt",
+            "plural_name": "Kilowatt",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "kW",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 46,
+        "fields": {
+            "name": "Horsepower",
+            "plural_name": "Horsepower",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "hp",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 735.49875,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 47,
+        "fields": {
+            "name": "Kilovolt Ampere",
+            "plural_name": "Kilovolt Amperes",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "kVA",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 48,
+        "fields": {
+            "name": "Volt Ampere",
+            "plural_name": "Volt Amperes",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "VA",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 49,
+        "fields": {
+            "name": "Joule per Second",
+            "plural_name": "Joules per Second",
+            "type": 8,
+            "base_unit": 43,
+            "abbreviation": "J/s",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 50,
+        "fields": {
+            "name": "Pascal",
+            "plural_name": "Pascals",
+            "type": 9,
+            "base_unit": null,
+            "abbreviation": "Pa"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 51,
+        "fields": {
+            "name": "Kilopascal",
+            "plural_name": "Kilopascals",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "kPa",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 52,
+        "fields": {
+            "name": "Bar",
+            "plural_name": "Bars",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "bar",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 100000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 53,
+        "fields": {
+            "name": "Pound per Square Inch",
+            "plural_name": "Pounds per Square Inch",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "psi",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 6894.7572932,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 54,
+        "fields": {
+            "name": "Atmosphere",
+            "plural_name": "Atmospheres",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "atm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 101325,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 55,
+        "fields": {
+            "name": "Newton per Square Meter",
+            "plural_name": "Newtons per Square Meter",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "N/m²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 56,
+        "fields": {
+            "name": "Newton per Square Centimeter",
+            "plural_name": "Newtons per Square Centimeter",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "N/cm²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 10000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 57,
+        "fields": {
+            "name": "Newton per Square Millimeter",
+            "plural_name": "Newtons per Square Millimeter",
+            "type": 9,
+            "base_unit": 50,
+            "abbreviation": "N/mm²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 58,
+        "fields": {
+            "name": "Meter per Second",
+            "plural_name": "Meters per Second",
+            "type": 10,
+            "base_unit": null,
+            "abbreviation": "m/s"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 59,
+        "fields": {
+            "name": "Kilometer per Hour",
+            "plural_name": "Kilometers per Hour",
+            "type": 10,
+            "base_unit": 58,
+            "abbreviation": "km/h",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 3.6
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 60,
+        "fields": {
+            "name": "Mile per Hour",
+            "plural_name": "Miles per Hour",
+            "type": 10,
+            "base_unit": 58,
+            "abbreviation": "mi/h",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.44704,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 61,
+        "fields": {
+            "name": "Meter per Hour",
+            "plural_name": "Meters per Hour",
+            "type": 10,
+            "base_unit": 58,
+            "abbreviation": "m/h",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 3600
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 62,
+        "fields": {
+            "name": "Meter per Minute",
+            "plural_name": "Meters per Minute",
+            "type": 10,
+            "base_unit": 58,
+            "abbreviation": "m/min",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 60
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 63,
+        "fields": {
+            "name": "Celsius",
+            "plural_name": "Celsius",
+            "type": 11,
+            "base_unit": null,
+            "abbreviation": "° C",
+            "space_after_value": false
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 64,
+        "fields": {
+            "name": "Fahrenheit",
+            "plural_name": "Fahrenheit",
+            "type": 11,
+            "base_unit": 63,
+            "abbreviation": "°F",
+            "x_offset": -32,
+            "y_offset": 0,
+            "multiplicand": 5,
+            "denominator": 9,
+            "space_after_value": false
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 65,
+        "fields": {
+            "name": "Kelvin",
+            "plural_name": "Kelvin",
+            "type": 11,
+            "base_unit": 63,
+            "abbreviation": "K",
+            "x_offset": 0,
+            "y_offset": -273.15,
+            "multiplicand": 1,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 66,
+        "fields": {
+            "name": "Second",
+            "plural_name": "Seconds",
+            "type": 12,
+            "base_unit": null,
+            "abbreviation": "s"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 67,
+        "fields": {
+            "name": "Minute",
+            "plural_name": "Minutes",
+            "type": 12,
+            "base_unit": 66,
+            "abbreviation": "min",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 60,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 68,
+        "fields": {
+            "name": "Hour",
+            "plural_name": "Hours",
+            "type": 12,
+            "base_unit": 66,
+            "abbreviation": "h",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 3600,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 69,
+        "fields": {
+            "name": "Millisecond",
+            "plural_name": "Milliseconds",
+            "type": 12,
+            "base_unit": 66,
+            "abbreviation": "ms",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 70,
+        "fields": {
+            "name": "Newton Meter",
+            "plural_name": "Newton Meters",
+            "type": 13,
+            "base_unit": null,
+            "abbreviation": "Nm"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 71,
+        "fields": {
+            "name": "Newton Centimeter",
+            "plural_name": "Newton Centimeters",
+            "type": 13,
+            "base_unit": 70,
+            "abbreviation": "Ncm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 100
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 72,
+        "fields": {
+            "name": "Newton Millimeter",
+            "plural_name": "Newton Millimeters",
+            "type": 13,
+            "base_unit": 70,
+            "abbreviation": "Nmm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 73,
+        "fields": {
+            "name": "Kilonewton Meter",
+            "plural_name": "Kilonewton Meters",
+            "type": 13,
+            "base_unit": 70,
+            "abbreviation": "kNm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 74,
+        "fields": {
+            "name": "Cubic Meter",
+            "plural_name": "Cubic Meters",
+            "type": 14,
+            "base_unit": null,
+            "abbreviation": "m³"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 75,
+        "fields": {
+            "name": "Liter",
+            "plural_name": "Liters",
+            "type": 14,
+            "base_unit": 74,
+            "abbreviation": "L",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 76,
+        "fields": {
+            "name": "Cubic Inch",
+            "plural_name": "Cubic Inches",
+            "type": 14,
+            "base_unit": 74,
+            "abbreviation": "in³",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 61023.6100347224
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 77,
+        "fields": {
+            "name": "Centiliter",
+            "plural_name": "Centiliters",
+            "type": 14,
+            "base_unit": 74,
+            "abbreviation": "cL",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 100000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 78,
+        "fields": {
+            "name": "Milliliter",
+            "plural_name": "Milliliters",
+            "type": 14,
+            "base_unit": 74,
+            "abbreviation": "mL",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 79,
+        "fields": {
+            "name": "Kilogram",
+            "plural_name": "Kilograms",
+            "type": 15,
+            "base_unit": null,
+            "abbreviation": "kg"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 80,
+        "fields": {
+            "name": "Gram",
+            "plural_name": "Grams",
+            "type": 15,
+            "base_unit": 79,
+            "abbreviation": "g",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 81,
+        "fields": {
+            "name": "Milligram",
+            "plural_name": "Milligrams",
+            "type": 15,
+            "base_unit": 79,
+            "abbreviation": "mg",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 82,
+        "fields": {
+            "name": "Pound",
+            "plural_name": "Pounds",
+            "type": 15,
+            "base_unit": 79,
+            "abbreviation": "lb",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 0.45359237,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 83,
+        "fields": {
+            "name": "Ounce",
+            "plural_name": "Ounces",
+            "type": 15,
+            "base_unit": 79,
+            "abbreviation": "oz",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 35.2739619807
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 84,
+        "fields": {
+            "name": "Tonne",
+            "plural_name": "Tonnes",
+            "type": 15,
+            "base_unit": 79,
+            "abbreviation": "t",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 85,
+        "fields": {
+            "name": "Meter per Second Square",
+            "plural_name": "Meters per Second Square",
+            "type": 16,
+            "base_unit": null,
+            "abbreviation": "m/s²"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 86,
+        "fields": {
+            "name": "Gravity",
+            "plural_name": "Gravity",
+            "type": 16,
+            "base_unit": 85,
+            "abbreviation": "g",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 9.80665,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 87,
+        "fields": {
+            "name": "Radian per Second Square",
+            "plural_name": "Radians per Second Square",
+            "type": 17,
+            "base_unit": null,
+            "abbreviation": "rad/s²"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 88,
+        "fields": {
+            "name": "Revolution per Second Square",
+            "plural_name": "Revolutions per Second Square",
+            "type": 17,
+            "base_unit": 87,
+            "abbreviation": "rev/s²",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 6.2831853069,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 89,
+        "fields": {
+            "name": "Radian per Second",
+            "plural_name": "Radians per Second",
+            "type": 18,
+            "base_unit": null,
+            "abbreviation": "rad/s"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 90,
+        "fields": {
+            "name": "Degree per Second",
+            "plural_name": "Degrees per Second",
+            "type": 18,
+            "base_unit": 89,
+            "abbreviation": "deg/s",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 3.14159265,
+            "denominator": 180
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 91,
+        "fields": {
+            "name": "Revolution per Minute",
+            "plural_name": "Revolutions per Minute",
+            "type": 18,
+            "base_unit": 89,
+            "abbreviation": "rpm",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 6.2831853072,
+            "denominator": 60
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 92,
+        "fields": {
+            "name": "Revolution per Second",
+            "plural_name": "Revolutions per Second",
+            "type": 18,
+            "base_unit": 89,
+            "abbreviation": "rev/s",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 6.2831853072,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 93,
+        "fields": {
+            "name": "Ampere",
+            "plural_name": "Amperes",
+            "type": 19,
+            "base_unit": null,
+            "abbreviation": "A"
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 94,
+        "fields": {
+            "name": "Kiloampere",
+            "plural_name": "Kiloamperes",
+            "type": 19,
+            "base_unit": 93,
+            "abbreviation": "kA",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1000,
+            "denominator": 1
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 95,
+        "fields": {
+            "name": "Milliampere",
+            "plural_name": "Milliamperes",
+            "type": 19,
+            "base_unit": 93,
+            "abbreviation": "mA",
+            "x_offset": 0,
+            "y_offset": 0,
+            "multiplicand": 1,
+            "denominator": 1000
+        }
+    },
+    {
+        "model": "odyssey_production.Unit",
+        "pk": 96,
+        "fields": {
+            "name": "Volt",
+            "plural_name": "Volts",
+            "type": 20,
+            "base_unit": null,
+            "abbreviation": "V"
+        }
+    }
+]

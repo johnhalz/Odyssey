@@ -1,0 +1,142 @@
+[
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 1,
+        "fields": {
+            "name": "Angle"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 2,
+        "fields": {
+            "name": "Area"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 3,
+        "fields": {
+            "name": "Density"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 4,
+        "fields": {
+            "name": "Energy"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 5,
+        "fields": {
+            "name": "Force"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 6,
+        "fields": {
+            "name": "Length"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 7,
+        "fields": {
+            "name": "Illumination"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 8,
+        "fields": {
+            "name": "Power"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 9,
+        "fields": {
+            "name": "Pressure"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 10,
+        "fields": {
+            "name": "Speed"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 11,
+        "fields": {
+            "name": "Temperature"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 12,
+        "fields": {
+            "name": "Time"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 13,
+        "fields": {
+            "name": "Torque"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 14,
+        "fields": {
+            "name": "Volume"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 15,
+        "fields": {
+            "name": "Weight"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 16,
+        "fields": {
+            "name": "Acceleration"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 17,
+        "fields": {
+            "name": "Angular Acceleration"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 18,
+        "fields": {
+            "name": "Angular Velocity"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 19,
+        "fields": {
+            "name": "Electrical Current"
+        }
+    },
+    {
+        "model": "odyssey_production.UnitType",
+        "pk": 20,
+        "fields": {
+            "name": "Electrical Voltage"
+        }
+    }
+]

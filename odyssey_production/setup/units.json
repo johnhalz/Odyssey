@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Radians",
+    "type": "Angle",
+    "base_unit": "Radians",
+    "conversion_to_base": "x",
+    "abbreviation": "Rad"
+  },
+  {
+    "name": "Degrees",
+    "type": "Angle",
+    "base_unit": "Radians",
+    "conversion_to_base": "57.2957795131 * x",
+    "abbreviation": "deg"
+  },
+  {
+    "name": "Square Meters",
+    "type": "Area",
+    "base_unit": "Square Meters",
+    "conversion_to_base": "x",
+    "abbreviation": "m²"
+  },
+  {
+    "name": "Square Centimeters",
+    "type": "Area",
+    "base_unit": "Square Meters",
+    "conversion_to_base": "1e-4 * x",
+    "abbreviation": "cm²"
+  }
+]
