@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class OdysseyProductionConfig(AppConfig):
+class ValuesAndUnitsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'odyssey_production'
+    name = 'values_and_units'

@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'odyssey_production.apps.OdysseyProductionConfig',
+    'values_and_units.apps.ValuesAndUnitsConfig',
+    'hardware.apps.HardwareConfig',
+    'production.apps.ProductionConfig',
     'rest_framework'
 ]
 
