@@ -14,6 +14,10 @@ class ProductionStepModel(models.Model):
     def __str__(self):
         return f"{self.name} ({self.version})"
 
+    class Meta:
+        verbose_name = 'Production Step Model'
+        verbose_name_plural = 'Production Step Models'
+
 
 class Configuration(models.Model):
     name = models.CharField(max_length=100)
@@ -29,11 +33,12 @@ class Configuration(models.Model):
 
 class ProductionStep(models.Model):
     order = models.ForeignKey('hardware.Order', related_name='production_steps', on_delete=models.DO_NOTHING)
-    production_step_model = models.ForeignKey('ProductionStepModel', related_name='production_steps', on_delete=models.DO_NOTHING)
+    production_step_model = models.ForeignKey('ProductionStepModel', related_name='production_steps', on_delete=models.DO_NOTHING, null=True, blank=True)
     status = models.CharField(max_length=255)
     operator = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='executed_production_steps')
     start_timestamp = models.DateTimeField()
     end_timestamp = models.DateTimeField(blank=True, null=True, default=None)
 
-    def __str__(self):
-        return self.order
+    class Meta:
+        verbose_name = 'Production Step'
+        verbose_name_plural = 'Production Steps'

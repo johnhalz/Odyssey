@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'values_and_units.apps.ValuesAndUnitsConfig',
     'hardware.apps.HardwareConfig',
     'production.apps.ProductionConfig',
+    'testing.apps.TestingConfig',
     'rest_framework'
 ]
 

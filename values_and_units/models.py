@@ -1,8 +1,10 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.contrib.postgres.fields import ArrayField
 from django.utils import timezone
 
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -41,6 +43,7 @@ class Unit(models.Model):
 class String(models.Model):
     string = models.CharField(max_length=100)
     create_ts = models.DateTimeField(default=timezone.now)
+    value = GenericRelation('Value', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.string
@@ -48,8 +51,9 @@ class String(models.Model):
 
 class Integer(models.Model):
     integer = models.IntegerField()
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None, null=True, blank=True)
     create_ts = models.DateTimeField(default=timezone.now)
+    value = GenericRelation('Value', on_delete=models.CASCADE)
 
     def __str__(self):
         string_value = str(self.integer)
@@ -61,8 +65,9 @@ class Integer(models.Model):
 
 class Decimal(models.Model):
     decimal = models.FloatField()
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None, null=True, blank=True)
     create_ts = models.DateTimeField(default=timezone.now)
+    value = GenericRelation('Value', on_delete=models.CASCADE)
 
     def __str__(self):
         string_value = str(self.decimal)
@@ -74,8 +79,9 @@ class Decimal(models.Model):
 
 class Array(models.Model):
     array = ArrayField(models.FloatField())
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None, null=True, blank=True)
     create_ts = models.DateTimeField(default=timezone.now)
+    value = GenericRelation('Value', on_delete=models.CASCADE)
 
     def __str__(self):
         string_value = str(self.array)
@@ -104,12 +110,11 @@ class Value(models.Model):
     content_type = models.ForeignKey(
         ContentType,
         on_delete=models.CASCADE,
+        null=True, blank=True,
         limit_choices_to={'model__in': ('integer', 'decimal', 'array', 'string')}
     )
-    object_id = models.PositiveIntegerField()
+    object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, default=None)
-    create_ts = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.content_object}"
@@ -137,3 +142,15 @@ class Range(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.lower}..{self.upper})"
+
+
+@receiver(post_save)
+def create_value_for_object(sender, instance, created, **kwargs):
+    # Check if the sender is one of the models you want to handle
+    if sender in [Decimal, Array, Integer, String]:
+        if created:
+            # Create a new Value instance for the created object
+            Value.objects.create(
+                content_object=instance,
+                content_type=ContentType.objects.get_for_model(instance),
+            )

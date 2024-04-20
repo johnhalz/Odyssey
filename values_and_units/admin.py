@@ -8,7 +8,7 @@ admin.site.register(UnitType)
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'abbreviation', 'type')
-    search_fields = ('id', 'name', 'abbreviation', "id")
+    search_fields = ('id', 'name', 'abbreviation')
     fields = ("name", "type", "base_unit", "abbreviation", "x_offset", "y_offset", "multiplicand", "denominator")
     ordering = ["name"]
 
@@ -33,7 +33,7 @@ class RangeAdmin(admin.ModelAdmin):
 class IntegerAdmin(admin.ModelAdmin):
     list_display = ('id', 'integer', 'unit', 'create_ts')
     search_fields = ('id', 'integer', 'unit')
-    fields = ('id', 'integer', 'unit', 'create_ts')
+    fields = ('integer', 'unit', 'create_ts')
     ordering = ["id"]
 
 
@@ -41,7 +41,7 @@ class IntegerAdmin(admin.ModelAdmin):
 class DecimalAdmin(admin.ModelAdmin):
     list_display = ('id', 'decimal', 'unit', 'create_ts')
     search_fields = ('id', 'decimal', 'unit')
-    fields = ('id', 'decimal', 'unit', 'create_ts')
+    fields = ('decimal', 'unit', 'create_ts')
     ordering = ["id"]
 
 
@@ -49,7 +49,7 @@ class DecimalAdmin(admin.ModelAdmin):
 class ArrayAdmin(admin.ModelAdmin):
     list_display = ('id', 'item_count', 'unit', 'create_ts')
     search_fields = ('id', 'unit')
-    fields = ('id', 'array', 'unit', 'create_ts')
+    fields = ('array', 'unit', 'create_ts')
     ordering = ["id"]
 
 
@@ -57,13 +57,16 @@ class ArrayAdmin(admin.ModelAdmin):
 class StringAdmin(admin.ModelAdmin):
     list_display = ('id', 'string', 'create_ts')
     search_fields = ('id', 'string')
-    fields = ('id', 'string', 'create_ts')
+    fields = ('string', 'create_ts')
     ordering = ["id"]
 
 
 @admin.register(Value)
 class ValueAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_object', 'unit', 'create_ts')
+    list_display = ('id', 'content_object')
     search_fields = ('id', 'content_object')
-    fields = ('id', 'object_id', 'content_object', 'unit', 'create_ts')
+    fields = ['object_id']
     ordering = ["id"]
+
+    def has_add_permission(self, request):
+        return False

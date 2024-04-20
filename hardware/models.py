@@ -34,7 +34,7 @@ class Order(models.Model):
 
 class Equipment(models.Model):
     name = models.CharField(max_length=255)
-    number = models.IntegerField(unique=True, default=1)
+    number = models.PositiveIntegerField(unique=True, default=1)
     calibration_ts = models.DateTimeField()
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True, default=None)
     status = models.CharField(max_length=255)
