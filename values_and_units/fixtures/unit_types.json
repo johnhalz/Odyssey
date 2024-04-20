@@ -1,0 +1,142 @@
+[
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 1,
+        "fields": {
+            "name": "Angle"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 2,
+        "fields": {
+            "name": "Area"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 3,
+        "fields": {
+            "name": "Density"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 4,
+        "fields": {
+            "name": "Energy"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 5,
+        "fields": {
+            "name": "Force"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 6,
+        "fields": {
+            "name": "Length"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 7,
+        "fields": {
+            "name": "Illumination"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 8,
+        "fields": {
+            "name": "Power"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 9,
+        "fields": {
+            "name": "Pressure"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 10,
+        "fields": {
+            "name": "Speed"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 11,
+        "fields": {
+            "name": "Temperature"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 12,
+        "fields": {
+            "name": "Time"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 13,
+        "fields": {
+            "name": "Torque"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 14,
+        "fields": {
+            "name": "Volume"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 15,
+        "fields": {
+            "name": "Weight"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 16,
+        "fields": {
+            "name": "Acceleration"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 17,
+        "fields": {
+            "name": "Angular Acceleration"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 18,
+        "fields": {
+            "name": "Angular Velocity"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 19,
+        "fields": {
+            "name": "Electrical Current"
+        }
+    },
+    {
+        "model": "values_and_units.UnitType",
+        "pk": 20,
+        "fields": {
+            "name": "Electrical Voltage"
+        }
+    }
+]
