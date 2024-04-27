@@ -9,7 +9,7 @@ class ProductionStepModel(models.Model):
     hardware_model = models.ForeignKey('hardware.HardwareModel', related_name='production_step_models', on_delete=models.DO_NOTHING)
     equipment = models.ForeignKey('hardware.Equipment', related_name='production_step_models', on_delete=models.DO_NOTHING)
     version = models.ForeignKey('values_and_units.Version', related_name='production_step_models', on_delete=models.CASCADE)
-    step_number = models.IntegerField(default=0)
+    step_number = models.PositiveIntegerField(default=0)
     optional = models.BooleanField(default=False)
     create_ts = models.DateTimeField(default=timezone.now)
 

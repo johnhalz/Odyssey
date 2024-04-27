@@ -28,7 +28,7 @@ class SpecificationGroup(models.Model):
 class Specification(models.Model):
     name = models.CharField(max_length=100)
     valid_range = models.ForeignKey('values_and_units.Range', related_name='validating_specifications', on_delete=models.DO_NOTHING)
-    applicable_scope = models.ForeignKey('values_and_units.Range', related_name='scoped_specifications', on_delete=models.DO_NOTHING)
+    applicable_scope = models.ForeignKey('values_and_units.Range', related_name='scoped_specifications', on_delete=models.DO_NOTHING, null=True, blank=True, default=None)
     hardware_model = models.ForeignKey('hardware.HardwareModel', related_name='specifications', on_delete=models.DO_NOTHING)
     production_step_model = models.ForeignKey('production.ProductionStepModel', related_name='specifications', on_delete=models.DO_NOTHING, default=None)
     group = models.ForeignKey('SpecificationGroup', related_name='specifications', on_delete=models.CASCADE)
@@ -81,6 +81,7 @@ class Processor(models.Model):
     name = models.CharField(max_length=100)
     create_ts = models.DateTimeField(default=timezone.now)
     version = models.ForeignKey('values_and_units.Version', related_name='processors', on_delete=models.CASCADE)
+    production_step_model = models.ForeignKey('production.ProductionStepModel', related_name='processors', on_delete=models.DO_NOTHING, default=None)
     file_path = models.FilePathField(path='.', recursive=True)
 
     def __str__(self):
