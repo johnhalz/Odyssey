@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'hardware.apps.HardwareConfig',
     'production.apps.ProductionConfig',
     'testing.apps.TestingConfig',
-    'rest_framework'
+    'rest_framework',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Odyssey API',
+    'DESCRIPTION': 'API Documentation',
+    'VERSION': '1.0.0-alpha',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SORT_OPERATION_PARAMETERS': False
+}
