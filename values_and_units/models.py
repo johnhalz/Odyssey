@@ -25,6 +25,7 @@ class Unit(models.Model):
     type = models.ForeignKey(UnitType, on_delete=models.CASCADE)
     base_unit = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     abbreviation = models.CharField(max_length=10)
+    create_ts = models.DateTimeField(default=timezone.now)
     """
     For conversion, we will use the formula:
     y = ((x + x_offset) * multiplicand / denominator) + y_offset
@@ -41,7 +42,7 @@ class Unit(models.Model):
 
 
 class String(models.Model):
-    string = models.CharField(max_length=100)
+    string = models.CharField(max_length=255)
     create_ts = models.DateTimeField(default=timezone.now)
     value = GenericRelation('Value', on_delete=models.CASCADE)
 
@@ -115,6 +116,7 @@ class Value(models.Model):
     )
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
+    create_ts = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.content_object}"
@@ -126,6 +128,7 @@ class Version(models.Model):
     minor = models.IntegerField(default=0)
     patch = models.IntegerField(default=0)
     create_ts = models.DateTimeField(default=timezone.now)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} v{self.major}.{self.minor}.{self.patch}"

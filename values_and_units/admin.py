@@ -7,9 +7,10 @@ admin.site.register(UnitType)
 # Admin classes
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'abbreviation', 'type')
+    list_display = ('id', 'name', 'abbreviation', 'type', 'create_ts')
     search_fields = ('id', 'name', 'abbreviation')
-    fields = ("name", "type", "base_unit", "abbreviation", "x_offset", "y_offset", "multiplicand", "denominator")
+    fields = ("name", "type", "base_unit", "abbreviation", "x_offset", "y_offset", "multiplicand",
+              "denominator", 'create_ts')
     ordering = ["name"]
 
 
@@ -63,9 +64,9 @@ class StringAdmin(admin.ModelAdmin):
 
 @admin.register(Value)
 class ValueAdmin(admin.ModelAdmin):
-    list_display = ('id', 'content_object')
+    list_display = ('id', 'content_object', 'create_ts')
     search_fields = ('id', 'content_object')
-    fields = ['object_id']
+    fields = ['object_id', 'create_ts']
     ordering = ["id"]
 
     def has_add_permission(self, request):
