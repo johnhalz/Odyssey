@@ -1,8 +1,10 @@
 from datetime import datetime
 
-from django.db.models import F
+from django.db.models import F, Model
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
 
 
 def sort(request, model, existing_list):
@@ -61,3 +63,46 @@ def filter_by_update_ts(request, existing_list):
         existing_list = existing_list.filter(update_ts__gte=updated_after_dt)
 
     return existing_list
+
+
+class ModelListAPIView(APIView):
+    pagination_class = PageNumberPagination
+    serializer_class = None
+    model_class: Model = None
+    open_api_params = []
+
+    def get(self, request, *args, **kwargs):
+        filtered_data = self.__filter(request)
+
+        if isinstance(filtered_data, Response):
+            return filtered_data
+
+        # Paginate the queryset
+        paginator = self.pagination_class()
+        paginated_data = paginator.paginate_queryset(filtered_data, request)
+
+        serializer = self.serializer_class(paginated_data, many=True)
+        return paginator.get_paginated_response(serializer.data)
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request):
+        try:
+            filtered_data = self.__filter(request)
+        except self.model_class.DoesNotExist:
+            return Response({'message': f'{self.serializer_class.__name__} not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        for single_equipment in filtered_data:
+            single_equipment.delete()
+
+        return Response({'message': f'{self.serializer_class.__name__}(s) deleted successfully'},
+                        status=status.HTTP_204_NO_CONTENT)
+
+    def __filter(self, request) -> list[Model] | Response:
+        pass

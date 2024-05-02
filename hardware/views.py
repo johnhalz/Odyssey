@@ -1,15 +1,13 @@
 from datetime import datetime
 
 from drf_spectacular.types import OpenApiTypes
-from rest_framework import status, generics
+from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.pagination import PageNumberPagination
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
 from .models import Hardware, HardwareModel, Order, Equipment
 from .serializers import HardwareSerializer, HardwareModelSerializer, OrderSerializer, EquipmentSerializer
-from Odyssey.api_common import sort, filter_by_create_ts
+from Odyssey.api_common import sort, filter_by_create_ts, ModelListAPIView
 
 
 @extend_schema(tags=['Hardware'])
@@ -20,9 +18,8 @@ class HardwareUpdate(generics.UpdateAPIView):
 
 
 @extend_schema(tags=['Hardware'])
-class HardwareList(APIView):
+class HardwareList(ModelListAPIView):
 
-    pagination_class = PageNumberPagination
     serializer_class = HardwareSerializer
 
     open_api_params = [
@@ -39,39 +36,13 @@ class HardwareList(APIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        hardware = self.__filter_hardware(request)
-
-        if isinstance(hardware, Response):
-            return hardware
-
-        # Paginate the queryset
-        paginator = self.pagination_class()
-        paginated_hardware = paginator.paginate_queryset(hardware, request)
-
-        serializer = self.serializer_class(paginated_hardware, many=True)
-        return paginator.get_paginated_response(serializer.data)
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        try:
-            hardware = self.__filter_hardware(request)
-        except Hardware.DoesNotExist:
-            return Response({'message': 'Hardware not found'}, status=status.HTTP_404_NOT_FOUND)
+        super().delete(request)
 
-        for single_hardware in hardware:
-            single_hardware.delete()
-
-        return Response({'message': 'Hardware deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
-
-    def __filter_hardware(self, request) -> list[Hardware] | Response:
+    def __filter(self, request) -> list[Hardware] | Response:
         hardware_id = request.GET.get('id', '')
         serial_number = request.GET.get('serial_number', '')
         hardware_set = request.GET.get('set', '')
@@ -105,9 +76,8 @@ class HardwareModelUpdate(generics.UpdateAPIView):
 
 
 @extend_schema(tags=['Hardware Model'])
-class HardwareModelList(APIView):
+class HardwareModelList(ModelListAPIView):
 
-    pagination_class = PageNumberPagination
     serializer_class = HardwareModelSerializer
 
     open_api_params = [
@@ -124,39 +94,13 @@ class HardwareModelList(APIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        models = self.__filter_hardware_models(request)
-
-        if isinstance(models, Response):
-            return models
-
-        # Paginate the queryset
-        paginator = self.pagination_class()
-        paginated_hardware = paginator.paginate_queryset(models, request)
-
-        serializer = self.serializer_class(paginated_hardware, many=True)
-        return paginator.get_paginated_response(serializer.data)
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        try:
-            models = self.__filter_hardware_models(request)
-        except HardwareModel.DoesNotExist:
-            return Response({'message': 'HardwareModel not found'}, status=status.HTTP_404_NOT_FOUND)
+        super().delete(request)
 
-        for single_model in models:
-            single_model.delete()
-
-        return Response({'message': 'HardwareModel(s) deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
-
-    def __filter_hardware_models(self, request) -> list[Hardware] | Response:
+    def __filter(self, request) -> list[HardwareModel] | Response:
         hardware_model_id = request.GET.get('id', '')
         position = request.GET.get('position', '')
         version = request.GET.get('version', '')
@@ -186,9 +130,8 @@ class OrderUpdate(generics.UpdateAPIView):
 
 
 @extend_schema(tags=['Order'])
-class OrderList(APIView):
+class OrderList(ModelListAPIView):
 
-    pagination_class = PageNumberPagination
     serializer_class = OrderSerializer
 
     open_api_params = [
@@ -205,39 +148,13 @@ class OrderList(APIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        orders = self.__filter_orders(request)
-
-        if isinstance(orders, Response):
-            return orders
-
-        # Paginate the queryset
-        paginator = self.pagination_class()
-        paginated_hardware = paginator.paginate_queryset(orders, request)
-
-        serializer = self.serializer_class(paginated_hardware, many=True)
-        return paginator.get_paginated_response(serializer.data)
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        try:
-            models = self.__filter_orders(request)
-        except Order.DoesNotExist:
-            return Response({'message': 'Order not found'}, status=status.HTTP_404_NOT_FOUND)
+        super().delete(request)
 
-        for single_model in models:
-            single_model.delete()
-
-        return Response({'message': 'Order(s) deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
-
-    def __filter_orders(self, request) -> list[Hardware] | Response:
+    def __filter(self, request) -> list[Order] | Response:
         order_id = request.GET.get('id', '')
         number = request.GET.get('number', '')
         order_type = request.GET.get('order_type', '')
@@ -267,9 +184,8 @@ class EquipmentUpdate(generics.UpdateAPIView):
 
 
 @extend_schema(tags=['Equipment'])
-class EquipmentList(APIView):
+class EquipmentList(ModelListAPIView):
 
-    pagination_class = PageNumberPagination
     serializer_class = EquipmentSerializer
 
     open_api_params = [
@@ -289,39 +205,13 @@ class EquipmentList(APIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        equipment = self.__filter_equipment(request)
-
-        if isinstance(equipment, Response):
-            return equipment
-
-        # Paginate the queryset
-        paginator = self.pagination_class()
-        paginated_data = paginator.paginate_queryset(equipment, request)
-
-        serializer = self.serializer_class(paginated_data, many=True)
-        return paginator.get_paginated_response(serializer.data)
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        try:
-            equipment = self.__filter_equipment(request)
-        except Equipment.DoesNotExist:
-            return Response({'message': 'Equipment not found'}, status=status.HTTP_404_NOT_FOUND)
+        super().delete(request)
 
-        for single_equipment in equipment:
-            single_equipment.delete()
-
-        return Response({'message': 'Equipment deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
-
-    def __filter_equipment(self, request) -> list[Hardware] | Response:
+    def __filter(self, request) -> list[Equipment] | Response:
         equipment_id = request.GET.get('id', '')
         name = request.GET.get('name', '')
         calibrated_before = request.GET.get('calibrated_before', '')
