@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.db.models import Q
 from drf_spectacular.types import OpenApiTypes
 from rest_framework import generics
 from rest_framework.response import Response
@@ -7,7 +8,7 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter
 
 from .models import Hardware, HardwareModel, Order, Equipment
 from .serializers import HardwareSerializer, HardwareModelSerializer, OrderSerializer, EquipmentSerializer
-from Odyssey.api_common import sort, filter_by_create_ts, ModelListAPIView
+from Odyssey.api_common import sort_field, ModelListAPIView
 
 
 @extend_schema(tags=['Hardware'])
@@ -21,6 +22,7 @@ class HardwareUpdate(generics.UpdateAPIView):
 class HardwareList(ModelListAPIView):
 
     serializer_class = HardwareSerializer
+    model_class = Hardware
 
     open_api_params = [
         OpenApiParameter(name="id", required=False, type=OpenApiTypes.INT),
@@ -29,9 +31,9 @@ class HardwareList(ModelListAPIView):
         OpenApiParameter(name="hardware_model", required=False, type=OpenApiTypes.INT),
         OpenApiParameter(name="created_after", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="created_before", required=False, type=OpenApiTypes.DATETIME),
-        OpenApiParameter(name='order_by', required=False, type=str, default='id',
+        OpenApiParameter(name='sort_by', required=False, type=str, default='id',
                          enum=['id', 'serial_number', 'hardware_model', 'create_ts']),
-        OpenApiParameter(name='order_dir', required=False, type=str, enum=['asc', 'desc'], default='desc'),
+        OpenApiParameter(name='sort_order', required=False, type=str, enum=['asc', 'desc'], default='desc'),
     ]
 
     @extend_schema(parameters=open_api_params)
@@ -43,29 +45,31 @@ class HardwareList(ModelListAPIView):
         super().delete(request)
 
     def __filter(self, request) -> list[Hardware] | Response:
-        hardware_id = request.GET.get('id', '')
-        serial_number = request.GET.get('serial_number', '')
-        hardware_set = request.GET.get('set', '')
-        hardware_model = request.GET.get('model', '')
+        filters = Q()
 
-        if hardware_id:
-            hardware = [Hardware.objects.get(pk=hardware_id)]
-        else:
-            hardware = Hardware.objects.all()
+        for param, value in request.GET.items():
+            if param == 'id':
+                ids = value.split(',')
+                id_filters = Q(id__in=ids)
+                filters &= id_filters
+            elif param == 'serial_number':
+                filters &= Q(serial_number__icontains=value)
+            elif param == 'set':
+                sets = value.split(',')
+                set_filters = Q(set__in=sets)
+                filters &= set_filters
+            elif param == 'hardware_model':
+                filters &= Q(hardware_model=value)
 
-        if serial_number:
-            hardware = hardware.filter(serial_number__icontains=serial_number)
+            elif param == 'created_before':
+                created_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__lte=created_before_dt)
+            elif param == 'created_after':
+                created_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__gte=created_after_dt)
 
-        if hardware_set:
-            hardware = hardware.filter(set=hardware_set)
-
-        if hardware_model:
-            hardware = hardware.filter(model=hardware_model)
-
-        hardware = filter_by_create_ts(request, hardware)
-        hardware = sort(request, Hardware, hardware)
-
-        return hardware
+        sort_field_str = sort_field(request, self.model_class)
+        return self.model_class.objects.filter(filters).order_by(sort_field_str)
 
 
 @extend_schema(tags=['Hardware Model'])
@@ -79,6 +83,7 @@ class HardwareModelUpdate(generics.UpdateAPIView):
 class HardwareModelList(ModelListAPIView):
 
     serializer_class = HardwareModelSerializer
+    model_class = HardwareModel
 
     open_api_params = [
         OpenApiParameter(name="id", required=False, type=OpenApiTypes.INT),
@@ -87,9 +92,9 @@ class HardwareModelList(ModelListAPIView):
         OpenApiParameter(name="version", required=False, type=OpenApiTypes.INT),
         OpenApiParameter(name="created_after", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="created_before", required=False, type=OpenApiTypes.DATETIME),
-        OpenApiParameter(name='order_by', required=False, type=str, default='id',
+        OpenApiParameter(name='sort_by', required=False, type=str, default='id',
                          enum=['id', 'name', 'position', 'parent', 'version', 'create_ts']),
-        OpenApiParameter(name='order_dir', required=False, type=str, enum=['asc', 'desc'], default='desc'),
+        OpenApiParameter(name='sort_order', required=False, type=str, enum=['asc', 'desc'], default='desc'),
     ]
 
     @extend_schema(parameters=open_api_params)
@@ -101,25 +106,29 @@ class HardwareModelList(ModelListAPIView):
         super().delete(request)
 
     def __filter(self, request) -> list[HardwareModel] | Response:
-        hardware_model_id = request.GET.get('id', '')
-        position = request.GET.get('position', '')
-        version = request.GET.get('version', '')
+        filters = Q()
 
-        if hardware_model_id:
-            models = [HardwareModel.objects.get(pk=hardware_model_id)]
-        else:
-            models = HardwareModel.objects.all()
+        for param, value in request.GET.items():
+            if param == 'id':
+                ids = value.split(',')
+                id_filters = Q(id__in=ids)
+                filters &= id_filters
+            elif param == 'name':
+                filters &= Q(name__icontains=value)
+            elif param == 'position':
+                filters &= Q(position__icontains=value)
+            elif param == 'version':
+                filters &= Q(version=value)
 
-        if position:
-            models = models.filter(position__icontains=position)
+            elif param == 'created_before':
+                created_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__lte=created_before_dt)
+            elif param == 'created_after':
+                created_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__gte=created_after_dt)
 
-        if version:
-            models = models.filter(version=version)
-
-        models = filter_by_create_ts(request, models)
-        models = sort(request, HardwareModel, models)
-
-        return models
+        sort_field_str = sort_field(request, self.model_class)
+        return self.model_class.objects.filter(filters).order_by(sort_field_str)
 
 
 @extend_schema(tags=['Order'])
@@ -133,6 +142,7 @@ class OrderUpdate(generics.UpdateAPIView):
 class OrderList(ModelListAPIView):
 
     serializer_class = OrderSerializer
+    model_class = Order
 
     open_api_params = [
         OpenApiParameter(name="id", required=False, type=OpenApiTypes.INT),
@@ -141,9 +151,9 @@ class OrderList(ModelListAPIView):
         OpenApiParameter(name="order_type", required=False, type=OpenApiTypes.STR),
         OpenApiParameter(name="created_after", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="created_before", required=False, type=OpenApiTypes.DATETIME),
-        OpenApiParameter(name='order_by', required=False, type=str, default='id',
+        OpenApiParameter(name='sort_by', required=False, type=str, default='id',
                          enum=['id', 'number', 'hardware', 'order_type', 'create_ts']),
-        OpenApiParameter(name='order_dir', required=False, type=str, enum=['asc', 'desc'], default='desc'),
+        OpenApiParameter(name='sort_order', required=False, type=str, enum=['asc', 'desc'], default='desc'),
     ]
 
     @extend_schema(parameters=open_api_params)
@@ -155,25 +165,31 @@ class OrderList(ModelListAPIView):
         super().delete(request)
 
     def __filter(self, request) -> list[Order] | Response:
-        order_id = request.GET.get('id', '')
-        number = request.GET.get('number', '')
-        order_type = request.GET.get('order_type', '')
+        filters = Q()
 
-        if order_id:
-            orders = [Order.objects.get(pk=order_id)]
-        else:
-            orders = Order.objects.all()
+        for param, value in request.GET.items():
+            if param == 'id':
+                ids = value.split(',')
+                id_filters = Q(id__in=ids)
+                filters &= id_filters
+            elif param == 'number':
+                order_numbers = value.split(',')
+                order_number_filters = Q(number__in=order_numbers)
+                filters &= order_number_filters
+            elif param == 'hardware':
+                filters &= Q(hardware=value)
+            elif param == 'order_type':
+                filters &= Q(order_type__icontains=value)
 
-        if number:
-            orders = orders.filter(number=number)
+            elif param == 'created_before':
+                created_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__lte=created_before_dt)
+            elif param == 'created_after':
+                created_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__gte=created_after_dt)
 
-        if order_type:
-            orders = orders.filter(order_type__icontains=order_type)
-
-        orders = filter_by_create_ts(request, orders)
-        orders = sort(request, Order, orders)
-
-        return orders
+        sort_field_str = sort_field(request, self.model_class)
+        return self.model_class.objects.filter(filters).order_by(sort_field_str)
 
 
 @extend_schema(tags=['Equipment'])
@@ -187,20 +203,20 @@ class EquipmentUpdate(generics.UpdateAPIView):
 class EquipmentList(ModelListAPIView):
 
     serializer_class = EquipmentSerializer
+    model_class = Equipment
 
     open_api_params = [
         OpenApiParameter(name="id", required=False, type=OpenApiTypes.INT),
         OpenApiParameter(name="name", required=False, type=OpenApiTypes.STR),
         OpenApiParameter(name="number", required=False, type=OpenApiTypes.INT),
-        OpenApiParameter(name="parent", required=False, type=OpenApiTypes.INT),
         OpenApiParameter(name="status", required=False, type=OpenApiTypes.STR),
         OpenApiParameter(name="calibrated_after", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="calibrated_before", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="created_after", required=False, type=OpenApiTypes.DATETIME),
         OpenApiParameter(name="created_before", required=False, type=OpenApiTypes.DATETIME),
-        OpenApiParameter(name='order_by', required=False, type=str, default='id',
+        OpenApiParameter(name='sort_by', required=False, type=str, default='id',
                          enum=['id', 'name', 'calibration_ts', 'parent', 'status', 'create_ts']),
-        OpenApiParameter(name='order_dir', required=False, type=str, enum=['asc', 'desc'], default='desc'),
+        OpenApiParameter(name='sort_order', required=False, type=str, enum=['asc', 'desc'], default='desc'),
     ]
 
     @extend_schema(parameters=open_api_params)
@@ -212,34 +228,35 @@ class EquipmentList(ModelListAPIView):
         super().delete(request)
 
     def __filter(self, request) -> list[Equipment] | Response:
-        equipment_id = request.GET.get('id', '')
-        name = request.GET.get('name', '')
-        calibrated_before = request.GET.get('calibrated_before', '')
-        calibrated_after = request.GET.get('calibrated_after', '')
-        equipment_status = request.GET.get('status', '')
+        filters = Q()
 
-        if equipment_id:
-            equipment = [Equipment.objects.get(pk=equipment_id)]
-        else:
-            equipment = Order.objects.all()
+        for param, value in request.GET.items():
+            if param == 'id':
+                ids = value.split(',')
+                id_filters = Q(id__in=ids)
+                filters &= id_filters
+            elif param == 'name':
+                filters &= Q(name__icontains=value)
+            elif param == 'number':
+                equipment_numbers = value.split(',')
+                equipment_number_filters = Q(number__in=equipment_numbers)
+                filters &= equipment_number_filters
+            elif param == 'status':
+                filters &= Q(status__icontains=value)
 
-        if name:
-            equipment = equipment.filter(name__icontains=name)
+            elif param == 'calibrated_before':
+                calibrated_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__lte=calibrated_before_dt)
+            elif param == 'calibrated_after':
+                calibrated_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__gte=calibrated_after_dt)
 
-        if equipment_status:
-            equipment = equipment.filter(status__icontains=equipment_status)
+            elif param == 'created_before':
+                created_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__lte=created_before_dt)
+            elif param == 'created_after':
+                created_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
+                filters &= Q(created_ts__gte=created_after_dt)
 
-        if calibrated_before:
-            # Attempt to format input string as a datetime
-            created_before_dt = datetime.strptime(calibrated_before, "%Y-%m-%dT%H:%M:%S.%f%z")
-            equipment = equipment.filter(calibration_ts__lte=created_before_dt)
-
-        if calibrated_after:
-            # Attempt to format input string as a datetime
-            created_after_dt = datetime.strptime(calibrated_after, "%Y-%m-%dT%H:%M:%S.%f%z")
-            equipment = equipment.filter(calibration_ts__gte=created_after_dt)
-
-        equipment = filter_by_create_ts(request, equipment)
-        equipment = sort(request, Equipment, equipment)
-
-        return equipment
+        sort_field_str = sort_field(request, self.model_class)
+        return self.model_class.objects.filter(filters).order_by(sort_field_str)
