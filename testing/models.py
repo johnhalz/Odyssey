@@ -7,8 +7,8 @@ class Measurement(models.Model):
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     value = models.ForeignKey('values_and_units.Value', related_name='measurements', on_delete=models.CASCADE, null=True, blank=True)
-    create_ts = models.DateTimeField(default=timezone.now)
     production_step = models.ForeignKey('production.ProductionStep', related_name='measurements', on_delete=models.CASCADE, null=True, blank=True)
+    create_ts = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.name}: {self.value}"
@@ -16,8 +16,8 @@ class Measurement(models.Model):
 
 class SpecificationGroup(models.Model):
     name = models.CharField(max_length=100)
-    commencement_date = models.DateField(default=None, null=True, blank=True)
-    expiration_date = models.DateField(default=None, null=True, blank=True)
+    commencement_ts = models.DateTimeField(default=None, null=True, blank=True)
+    expiration_ts = models.DateTimeField(default=None, null=True, blank=True)
     create_ts = models.DateTimeField(default=timezone.now)
 
     class Meta:

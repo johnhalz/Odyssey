@@ -26,6 +26,8 @@ def sort_field(request, model) -> str | Response:
         else:
             return order_field
 
+    return '-id'
+
 
 class ModelListAPIView(APIView):
     pagination_class = PageNumberPagination
@@ -34,7 +36,7 @@ class ModelListAPIView(APIView):
     open_api_params = []
 
     def get(self, request, *args, **kwargs):
-        filtered_data = self.__filter(request)
+        filtered_data = self._filter(request)
 
         if isinstance(filtered_data, Response):
             return filtered_data
@@ -56,7 +58,7 @@ class ModelListAPIView(APIView):
 
     def delete(self, request):
         try:
-            filtered_data = self.__filter(request)
+            filtered_data = self._filter(request)
         except self.model_class.DoesNotExist:
             return Response({'message': f'{self.serializer_class.__name__} not found'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -66,5 +68,5 @@ class ModelListAPIView(APIView):
         return Response({'message': f'{self.serializer_class.__name__}(s) deleted successfully'},
                         status=status.HTTP_204_NO_CONTENT)
 
-    def __filter(self, request) -> list[Model] | Response:
+    def _filter(self, request):
         pass

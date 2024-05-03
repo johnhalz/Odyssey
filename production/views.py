@@ -40,13 +40,13 @@ class ProductionStepModelList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[ProductionStepModel] | Response:
+    def _filter(self, request) -> list[ProductionStepModel] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
@@ -104,13 +104,13 @@ class ConfigurationList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[Configuration] | Response:
+    def _filter(self, request) -> list[Configuration] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
@@ -171,13 +171,13 @@ class ProductionStepList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[ProductionStep] | Response:
+    def _filter(self, request) -> list[ProductionStep] | Response:
         filters = Q()
 
         for param, value in request.GET.items():

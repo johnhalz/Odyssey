@@ -38,33 +38,33 @@ class HardwareList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[Hardware] | Response:
+    def _filter(self, request) -> list[Hardware] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
-            if param == 'id':
+            if param == 'id' and value:
                 ids = value.split(',')
                 id_filters = Q(id__in=ids)
                 filters &= id_filters
-            elif param == 'serial_number':
+            elif param == 'serial_number' and value:
                 filters &= Q(serial_number__icontains=value)
-            elif param == 'set':
+            elif param == 'set' and value:
                 sets = value.split(',')
                 set_filters = Q(set__in=sets)
                 filters &= set_filters
-            elif param == 'hardware_model':
+            elif param == 'hardware_model' and value:
                 filters &= Q(hardware_model=value)
 
-            elif param == 'created_before':
+            elif param == 'created_before' and value:
                 created_before_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
                 filters &= Q(created_ts__lte=created_before_dt)
-            elif param == 'created_after':
+            elif param == 'created_after' and value:
                 created_after_dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f%z")
                 filters &= Q(created_ts__gte=created_after_dt)
 
@@ -99,13 +99,13 @@ class HardwareModelList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[HardwareModel] | Response:
+    def _filter(self, request) -> list[HardwareModel] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
@@ -158,13 +158,13 @@ class OrderList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[Order] | Response:
+    def _filter(self, request) -> list[Order] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
@@ -221,13 +221,13 @@ class EquipmentList(ModelListAPIView):
 
     @extend_schema(parameters=open_api_params)
     def get(self, request):
-        super().get(request)
+        return super().get(request)
 
     @extend_schema(parameters=open_api_params)
     def delete(self, request):
-        super().delete(request)
+        return super().delete(request)
 
-    def __filter(self, request) -> list[Equipment] | Response:
+    def _filter(self, request) -> list[Equipment] | Response:
         filters = Q()
 
         for param, value in request.GET.items():
