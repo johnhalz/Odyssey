@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+
+from rest_framework.settings import api_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +45,9 @@ INSTALLED_APPS = [
     'production.apps.ProductionConfig',
     'testing.apps.TestingConfig',
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
+    'accounts',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +142,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 
 SPECTACULAR_SETTINGS = {
@@ -145,4 +151,13 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0-alpha',
     'SERVE_INCLUDE_SCHEMA': False,
     'SORT_OPERATION_PARAMETERS': False
+}
+
+REST_KNOX = {
+    'SECURE_HASH_ALGORITHM':'cryptography.hazmat.primitives.hashes.SHA512',
+    'TOKEN_TTL': timedelta(hours=48),   # The default is 10 hours i.e., timedelta(hours=10)).
+    'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+    'TOKEN_LIMIT_PER_USER': None,   # By default, this option is disabled and set to None -- thus no limit.
+    'AUTO_REFRESH': False,  # Defines if the token expiry time is extended by TOKEN_TTL each time the token is used.
+    'EXPIRY_DATETIME_FORMAT': api_settings.DATETIME_FORMAT,
 }
