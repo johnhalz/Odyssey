@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import Q
 from drf_spectacular.types import OpenApiTypes
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
@@ -15,6 +15,7 @@ from Odyssey.api_common import sort_field, ModelListAPIView
 class ProductionStepModelUpdate(generics.UpdateAPIView):
     queryset = ProductionStepModel.objects.all()
     serializer_class = ProductionStepModelSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -22,6 +23,7 @@ class ProductionStepModelUpdate(generics.UpdateAPIView):
 class ProductionStepModelList(ModelListAPIView):
 
     serializer_class = ProductionStepModelSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = ProductionStepModel
 
     open_api_params = [
@@ -80,6 +82,7 @@ class ProductionStepModelList(ModelListAPIView):
 class ConfigurationUpdate(generics.UpdateAPIView):
     queryset = Configuration.objects.all()
     serializer_class = ConfigurationSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -87,6 +90,7 @@ class ConfigurationUpdate(generics.UpdateAPIView):
 class ConfigurationList(ModelListAPIView):
 
     serializer_class = ConfigurationSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Configuration
 
     open_api_params = [
@@ -142,6 +146,7 @@ class ConfigurationList(ModelListAPIView):
 class ProductionStepUpdate(generics.UpdateAPIView):
     queryset = ProductionStep.objects.all()
     serializer_class = ProductionStepSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -149,6 +154,7 @@ class ProductionStepUpdate(generics.UpdateAPIView):
 class ProductionStepList(ModelListAPIView):
 
     serializer_class = ProductionStepSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model_class = ProductionStep
 
     open_api_params = [

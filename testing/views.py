@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import Q
 from drf_spectacular.types import OpenApiTypes
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
@@ -18,6 +18,7 @@ from Odyssey.api_common import sort_field, ModelListAPIView
 class MeasurementUpdate(generics.UpdateAPIView):
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -25,6 +26,7 @@ class MeasurementUpdate(generics.UpdateAPIView):
 class MeasurementList(ModelListAPIView):
 
     serializer_class = MeasurementSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Measurement
 
     open_api_params = [
@@ -76,6 +78,7 @@ class MeasurementList(ModelListAPIView):
 class SpecificationGroupUpdate(generics.UpdateAPIView):
     queryset = SpecificationGroup.objects.all()
     serializer_class = SpecificationGroupSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -83,6 +86,7 @@ class SpecificationGroupUpdate(generics.UpdateAPIView):
 class SpecificationGroupList(ModelListAPIView):
 
     serializer_class = SpecificationGroupSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = SpecificationGroup
 
     open_api_params = [
@@ -147,6 +151,7 @@ class SpecificationGroupList(ModelListAPIView):
 class SpecificationUpdate(generics.UpdateAPIView):
     queryset = Specification.objects.all()
     serializer_class = SpecificationSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -154,6 +159,7 @@ class SpecificationUpdate(generics.UpdateAPIView):
 class SpecificationList(ModelListAPIView):
 
     serializer_class = SpecificationSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Specification
 
     open_api_params = [
@@ -216,6 +222,7 @@ class SpecificationList(ModelListAPIView):
 class ResultUpdate(generics.UpdateAPIView):
     queryset = Result.objects.all()
     serializer_class = ResultSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -223,6 +230,7 @@ class ResultUpdate(generics.UpdateAPIView):
 class ResultList(ModelListAPIView):
 
     serializer_class = ResultSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Result
 
     open_api_params = [
@@ -275,6 +283,7 @@ class ResultList(ModelListAPIView):
 class NonComplianceUpdate(generics.UpdateAPIView):
     queryset = NonCompliance.objects.all()
     serializer_class = NonComplianceSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -282,6 +291,7 @@ class NonComplianceUpdate(generics.UpdateAPIView):
 class NonComplianceList(ModelListAPIView):
 
     serializer_class = NonComplianceSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = NonCompliance
 
     open_api_params = [
@@ -346,6 +356,7 @@ class NonComplianceList(ModelListAPIView):
 class NonComplianceCommentUpdate(generics.UpdateAPIView):
     queryset = NonComplianceComment.objects.all()
     serializer_class = NonComplianceCommentSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -353,6 +364,7 @@ class NonComplianceCommentUpdate(generics.UpdateAPIView):
 class NonComplianceCommentList(ModelListAPIView):
 
     serializer_class = NonComplianceCommentSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = NonComplianceComment
 
     open_api_params = [
@@ -408,6 +420,7 @@ class NonComplianceCommentList(ModelListAPIView):
 class ProcessorUpdate(generics.UpdateAPIView):
     queryset = Processor.objects.all()
     serializer_class = ProcessorSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -415,6 +428,7 @@ class ProcessorUpdate(generics.UpdateAPIView):
 class ProcessorList(ModelListAPIView):
 
     serializer_class = ProcessorSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Processor
 
     open_api_params = [

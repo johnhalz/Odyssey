@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import Q
 from drf_spectacular.types import OpenApiTypes
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
@@ -16,6 +16,7 @@ from Odyssey.api_common import sort_field, ModelListAPIView
 class UnitTypeUpdate(generics.UpdateAPIView):
     queryset = UnitType.objects.all()
     serializer_class = UnitTypeSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -23,6 +24,7 @@ class UnitTypeUpdate(generics.UpdateAPIView):
 class UnitTypeList(ModelListAPIView):
 
     serializer_class = UnitTypeSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = UnitType
 
     open_api_params = [
@@ -60,6 +62,7 @@ class UnitTypeList(ModelListAPIView):
 class UnitUpdate(generics.UpdateAPIView):
     queryset = Unit.objects.all()
     serializer_class = UnitSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -67,6 +70,7 @@ class UnitUpdate(generics.UpdateAPIView):
 class UnitList(ModelListAPIView):
 
     serializer_class = UnitSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Unit
 
     open_api_params = [
@@ -119,6 +123,7 @@ class UnitList(ModelListAPIView):
 class StringUpdate(generics.UpdateAPIView):
     queryset = String.objects.all()
     serializer_class = StringSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -126,6 +131,7 @@ class StringUpdate(generics.UpdateAPIView):
 class StringList(ModelListAPIView):
 
     serializer_class = StringSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = String
 
     open_api_params = [
@@ -172,6 +178,7 @@ class StringList(ModelListAPIView):
 class IntegerUpdate(generics.UpdateAPIView):
     queryset = Integer.objects.all()
     serializer_class = IntegerSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -179,6 +186,7 @@ class IntegerUpdate(generics.UpdateAPIView):
 class IntegerList(ModelListAPIView):
 
     serializer_class = IntegerSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Integer
 
     open_api_params = [
@@ -228,6 +236,7 @@ class IntegerList(ModelListAPIView):
 class DecimalUpdate(generics.UpdateAPIView):
     queryset = Decimal.objects.all()
     serializer_class = DecimalSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -235,6 +244,7 @@ class DecimalUpdate(generics.UpdateAPIView):
 class DecimalList(ModelListAPIView):
 
     serializer_class = DecimalSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Decimal
 
     open_api_params = [
@@ -284,6 +294,7 @@ class DecimalList(ModelListAPIView):
 class ArrayUpdate(generics.UpdateAPIView):
     queryset = Array.objects.all()
     serializer_class = ArraySerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -291,6 +302,7 @@ class ArrayUpdate(generics.UpdateAPIView):
 class ArrayList(ModelListAPIView):
 
     serializer_class = ArraySerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Array
 
     open_api_params = [
@@ -337,6 +349,7 @@ class ArrayList(ModelListAPIView):
 class ValueUpdate(generics.UpdateAPIView):
     queryset = Value.objects.all()
     serializer_class = ValueSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -344,6 +357,7 @@ class ValueUpdate(generics.UpdateAPIView):
 class ValueList(ModelListAPIView):
 
     serializer_class = ValueSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Value
 
     open_api_params = [
@@ -387,6 +401,7 @@ class ValueList(ModelListAPIView):
 class VersionUpdate(generics.UpdateAPIView):
     queryset = Version.objects.all()
     serializer_class = VersionSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -394,6 +409,7 @@ class VersionUpdate(generics.UpdateAPIView):
 class VersionList(ModelListAPIView):
 
     serializer_class = VersionSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Version
 
     open_api_params = [
@@ -449,6 +465,7 @@ class VersionList(ModelListAPIView):
 class RangeUpdate(generics.UpdateAPIView):
     queryset = Range.objects.all()
     serializer_class = RangeSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -456,6 +473,7 @@ class RangeUpdate(generics.UpdateAPIView):
 class RangeList(ModelListAPIView):
 
     serializer_class = RangeSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model = Range
 
     open_api_params = [

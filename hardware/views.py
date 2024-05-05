@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db.models import Q
 from drf_spectacular.types import OpenApiTypes
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
@@ -15,6 +15,7 @@ from Odyssey.api_common import sort_field, ModelListAPIView
 class HardwareUpdate(generics.UpdateAPIView):
     queryset = Hardware.objects.all()
     serializer_class = HardwareSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -22,6 +23,7 @@ class HardwareUpdate(generics.UpdateAPIView):
 class HardwareList(ModelListAPIView):
 
     serializer_class = HardwareSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model_class = Hardware
 
     open_api_params = [
@@ -76,6 +78,7 @@ class HardwareList(ModelListAPIView):
 class HardwareModelUpdate(generics.UpdateAPIView):
     queryset = HardwareModel.objects.all()
     serializer_class = HardwareModelSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -83,6 +86,7 @@ class HardwareModelUpdate(generics.UpdateAPIView):
 class HardwareModelList(ModelListAPIView):
 
     serializer_class = HardwareModelSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model_class = HardwareModel
 
     open_api_params = [
@@ -135,6 +139,7 @@ class HardwareModelList(ModelListAPIView):
 class OrderUpdate(generics.UpdateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -142,6 +147,7 @@ class OrderUpdate(generics.UpdateAPIView):
 class OrderList(ModelListAPIView):
 
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model_class = Order
 
     open_api_params = [
@@ -196,6 +202,7 @@ class OrderList(ModelListAPIView):
 class EquipmentUpdate(generics.UpdateAPIView):
     queryset = Equipment.objects.all()
     serializer_class = EquipmentSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_field = 'pk'
 
 
@@ -203,6 +210,7 @@ class EquipmentUpdate(generics.UpdateAPIView):
 class EquipmentList(ModelListAPIView):
 
     serializer_class = EquipmentSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     model_class = Equipment
 
     open_api_params = [
