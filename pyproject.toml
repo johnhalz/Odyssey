@@ -11,8 +11,14 @@ django = "^5.0"
 psycopg = "^3.1.16"
 psycopg-binary = "^3.1.16"
 djangorestframework = "^3.14.0"
+drf-spectacular = "^0.27.2"
+django-rest-knox = "^4.2.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"

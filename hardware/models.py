@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Hardware(models.Model):
-    serial_number = models.CharField(max_length=255, unique=True)
+    serial_number = models.CharField(max_length=255)
     model = models.ForeignKey('HardwareModel', related_name='hardware_models', on_delete=models.DO_NOTHING)
     set = models.PositiveIntegerField(default=1)
     create_ts = models.DateTimeField(default=timezone.now)

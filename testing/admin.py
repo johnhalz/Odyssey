@@ -12,9 +12,9 @@ class MeasurementAdmin(admin.ModelAdmin):
 
 @admin.register(SpecificationGroup)
 class SpecificationGroupAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'commencement_date', 'expiration_date', 'create_ts')
+    list_display = ('id', 'name', 'commencement_ts', 'expiration_ts', 'create_ts')
     search_fields = ('id', 'name')
-    fields = ("name", "commencement_date", "expiration_date", 'create_ts')
+    fields = ("name", "commencement_ts", "expiration_ts", 'create_ts')
     ordering = ["id"]
 
 
