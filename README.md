@@ -26,8 +26,6 @@ Full documentation of this prject can now be found on our new [Confluence page](
 
 ## Quick Start
 
-This section will give you a brief overview of the commands to set up a local instance of Odyssey running locally on your machine (further details are available in the [documentation](https://github.com/johnhalz/Odyssey/wiki)).
-
 ### Setting Up Python
 After cloning the repo, run the following commands to set up the virtual environment and install the dependencies:
 
@@ -44,6 +42,13 @@ Run the following commands to create a new docker container with Postgres:
 docker run --name odyssey -e POSTGRES_PASSWORD=odysseypassword -d -p 5432:5432 postgres
 ```
 
+### Performing Migrations
+You can then perform the migrations in your database:
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
+
 ### Adding Seed Data
 By default, we have included some seed data to help you get started. This data includes unit types, and over 90 physical units with their conversion formulas. Ensure that your docker container is running, then enter the following commands:
 ```shell
@@ -52,15 +57,13 @@ python manage.py loaddata values_and_units/fixtures/unit_types.json   # Load uni
 python manage.py loaddata values_and_units/fixtures/units.json        # Load units
 ```
 
-### Performing Migrations & Running Odyssey
-You can then perform the migrations in your database and start the service:
+### Running Odyssey
+You can start the service by running:
 ```shell
-python manage.py makemigrations
-python manage.py migrate
 python manage.py runserver
 ```
 
-After running the server go to http://127.0.0.1:8000/, and you will see the default django starter page.
+After running the server go to http://127.0.0.1:8000/, and you will see the starter page.
 
 To access the admin page, go to http://127.0.0.1:8000/admin. You will need to create a login to be able to login, which you can do by running the command:
 ```shell
@@ -68,9 +71,6 @@ python manage.py createsuperuser
 ```
 
 which will then prompt you to create a username and password, you will then be able to log into the admin page.
-
-## Documentation
-You can find all the documentation for this project [linked here](https://github.com/johnhalz/Odyssey/wiki).
 
 ## Future Related Projects
 While related projects do not exist yet, a few are in the roadmap:
