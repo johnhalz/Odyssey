@@ -12,6 +12,9 @@
 - _Coming Soon:_ Ability to store images and documents and link data to them
 - _Coming Soon:_ View live data of your production line anywhere with websockets
 
+## Documentation
+Full documentation of this prject can now be found on our new [Confluence page]([url](https://halo-engineering.atlassian.net/wiki/spaces/Odyssey/overview?homepageId=229492))!
+
 ## Table of Contents
 - [Quick Start](#quick-start)
   - [Setting Up Python](#setting-up-python)
@@ -45,8 +48,8 @@ docker run --name odyssey -e POSTGRES_PASSWORD=odysseypassword -d -p 5432:5432 p
 By default, we have included some seed data to help you get started. This data includes unit types, and over 90 physical units with their conversion formulas. Ensure that your docker container is running, then enter the following commands:
 ```shell
 cd <path-to-odyssey-folder>
-python manage.py loaddata odyssey_production/fixtures/unit_types.json   # Load unit types
-python manage.py loaddata odyssey_production/fixtures/units.json        # Load units
+python manage.py loaddata values_and_units/fixtures/unit_types.json   # Load unit types
+python manage.py loaddata values_and_units/fixtures/units.json        # Load units
 ```
 
 ### Performing Migrations & Running Odyssey
