@@ -2,7 +2,7 @@
 name = "odyssey"
 version = "0.1.0"
 description = ""
-authors = ["John Halazonetis <john.halazonetis@scandit.com>"]
+authors = ["John Halazonetis <john.halazonetis@icloud.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
