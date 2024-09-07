@@ -1,0 +1,1455 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../API/Usage%20%26%20Documentation/">
+      
+      
+        <link rel="next" href="../../Development%20Setup%20Guide/Database%20Setup/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Overall Structure - Odyssey Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overall-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Odyssey Documentation" class="md-header__button md-logo" aria-label="Odyssey Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Odyssey Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overall Structure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Odyssey Documentation" class="md-nav__button md-logo" aria-label="Odyssey Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Odyssey Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/Usage%20%26%20Documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Usage &amp; Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overall Structure
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Overall Structure
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fields
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-units-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Values &amp; Units Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Values & Units Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decimal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Range
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Order
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equipment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-step-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Step Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Compliance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliance-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Compliance Comment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development Setup Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Development Setup Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development%20Setup%20Guide/Database%20Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development%20Setup%20Guide/Making%20Migrations%20%26%20Adding%20Seed%20Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Making Migrations &amp; Adding Seed Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development%20Setup%20Guide/Python%20Environment%20Setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development%20Setup%20Guide/Running%20Server%20%26%20Creating%20an%20Admin%20Account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Server &amp; Creating an Admin Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fields
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-units-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Values &amp; Units Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Values & Units Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decimal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    <span class="md-ellipsis">
+      Range
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Order
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equipment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-step-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Step Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measurement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specification-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Compliance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliance-comment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Compliance Comment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="overall-structure">Overall Structure</h1>
+<p>The overall structure of the Odyssey database is shown below:</p>
+<p><img alt="Odyssey Structure" src="../../img/database_structure_black.svg#only-light" />
+<img alt="Odyssey Structure" src="../../img/database_structure.svg#only-dark" /></p>
+<h2 id="fields">Fields</h2>
+<h3 id="values-units-tables">Values &amp; Units Tables</h3>
+<p>The values and units tables are one of the big strengths of the Odyssey framework, as they allow efficient and flexible storage of physical measurements in numerical, string or array forms. The units tables categorise units into different types, and conversions between units are accessible through the linear parameters defined with each unit.</p>
+<p>While a base unit system is provided, users can add more units that are pertinent to their application if they need to.</p>
+<h4 id="unit-type">Unit Type</h4>
+<p>This table defines the different types of units that are stored in the Unit table.
+Each <code>UnitType</code> entry contains the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the unit type</li>
+</ul>
+<h4 id="unit">Unit</h4>
+<p>As its name implies, the <code>Unit</code> table stores all of the units along with their conversion factors. To simplify unit conversion, we define a base unit for each unit type. For each unit, we then define the factors to convert from that unit back to the base unit. We use the following formula to convert a value in an arbitrary unit <span class="arithmatex">\(x\)</span> to a value <span class="arithmatex">\(y\)</span> in the base unit:</p>
+<div class="arithmatex">\[
+y = \frac{\left(x + x_{offset} \right) \cdot multiplicand}{denominator} + y_{offset}
+\]</div>
+<p>Each <code>Unit</code> entry stores the following data:
+- <code>name</code> (Text): The name of the unit
+- <code>plural_name</code> (Text): The plural name of the unit
+- <code>space_after_value</code> (Boolean): This field specifies if a space should be added between the value and the unit when printing the quantity (value and unit)
+- <code>base_unit</code> (<code>Unit</code>): Link to the base unit of the unit type (will be null if the entry is the base unit)
+- <code>abbreviation</code> (Text): Unit abbreviation
+- <code>create_ts</code> (Date &amp; Time): When this entry was created
+- <code>x_offset</code> (Decimal): value
+- <code>y_offset</code> (Decimal): value
+- <code>multiplicand</code> (Decimal): value
+- <code>denominator</code> (Decimal): value</p>
+<h4 id="value">Value</h4>
+<p>As multiple different types of values can be stored (strings, integers, decimal numbers and array), the <code>Value</code> table offers a single point where users can access this data. We have created this table so that developers that interact with Odyssey and its APIs have a high-performance (database-level) access point to values of any type (hence removing any logic that would required to check the desired type before querying the database). This can become very useful when searching for values, and is already used within the Odyssey database when another table links to a value.</p>
+<p>Each <code>Value</code> entry is automatically created in the database when a new <code>String</code>, <code>Integer</code>, <code>Decimal</code> or <code>Array</code> is created and each <code>Value</code> entry contains the following data:</p>
+<ul>
+<li><code>content_type</code>: The type of content that the entry is linking to (needed for database logic)</li>
+<li><code>object_id</code> (Integer): The id of the object we are linking to</li>
+<li><code>content_object</code>: This is the content of the object (this is what developers would need to access through this table)</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="string">String</h4>
+<p>The <code>String</code> table contains all of the stored strings that are to be used as values. While using strings for containing numerical values is discouraged (there are specific tables for this). The odd case can still arise where a string is the only possible usable type.</p>
+<p>Each <code>String</code> entry stores the following data:</p>
+<ul>
+<li><code>string</code> (Text): The text of the string</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
+</ul>
+<h4 id="integer">Integer</h4>
+<p>The <code>Integer</code> table stores integer values that can be linked to a unit (although this is optional).</p>
+<p>Each <code>Integer</code> entry stores the following data:</p>
+<ul>
+<li><code>integer</code> (Integer): Integer value</li>
+<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
+</ul>
+<h4 id="decimal">Decimal</h4>
+<p>The <code>Decimal</code> table stores any float number that can be linked to a unit (although this is optional).</p>
+<p>Each <code>Decimal</code> entry stores the following data:</p>
+<ul>
+<li><code>decimal</code> (Float): The decimal number's value</li>
+<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
+</ul>
+<h4 id="array">Array</h4>
+<p>The <code>Array</code> table stores any array of numbers that can be linked to a unit (although this is optional).</p>
+<p>Each <code>Array</code> entry stores the following data:</p>
+<ul>
+<li><code>array</code> (<code>Array[Float]</code>): The array value</li>
+<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
+</ul>
+<h4 id="version">Version</h4>
+<p>As configurations, software and hardware typically have versions assigned to them, we create a <code>Version</code> table to store all of these versions. We enforce the use of semantic versioning numbers with major, minor and patch number values.</p>
+<p>Each <code>Version</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): An associated name of the version</li>
+<li><code>major</code> (Integer): The major version number</li>
+<li><code>minor</code> (Integer): The minor version number</li>
+<li><code>patch</code> (Integer): The patch version number</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>description</code> (Text): An optional description of the version</li>
+</ul>
+<h4 id="range">Range</h4>
+<p>Typically when defining specifications, different ranges are defined that give a minimum and maximum bounds to the spec. The <code>Range</code> table is meant to hold such data.</p>
+<p>Each <code>Range</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): Name of the range</li>
+<li><code>lower</code> (<code>Value</code>): Lower value</li>
+<li><code>upper</code> (<code>Value</code>): Upper value</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h3 id="hardware-tables">Hardware Tables</h3>
+<h4 id="hardware-model">Hardware Model</h4>
+<p>The <code>HardwareModel</code> table is meant to store the model of the assembled hardware. It is meant to store the assembly logic (which part goes where, and where different sub-assemblies are).</p>
+<p>Each <code>HardwareModel</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the hardware in question</li>
+<li><code>position</code> (Text): The position of the hardware in its assembly</li>
+<li><code>parent</code> (<code>HardwareModel</code>): The parent assembly (this will be empty if this is the top assembly)</li>
+<li><code>version</code> (<code>Version</code>): The version of this part</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="hardware">Hardware</h4>
+<p>The <code>Hardware</code> table is meant to store all of the instances of physical hardware that were built. Each <code>Hardware</code> element is meant to reference a <code>HardwareModel</code> entry.</p>
+<p>Each <code>Hardware</code> entry stores the following data:</p>
+<ul>
+<li><code>serial_number</code> (Text): The serial number (or part number) of the hardware</li>
+<li><code>model</code> (<code>HardwareModel</code>): The hardware model the this entry references</li>
+<li><code>set</code> (Integer): The set in which this entry belongs</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="order">Order</h4>
+<p>As hardware can be treated in different ways in production, (initial build-up, repair, service, etc.), we create order numbers to keep track of the different types of treatment a piece of hardware with the same serial number can go through. We call these <code>Order</code> numbers.</p>
+<p>Each <code>Order</code> entry stores the following data:</p>
+<ul>
+<li><code>number</code> (Integer): Order number</li>
+<li><code>hardware</code> (<code>Hardware</code>): Link to the hardware in question</li>
+<li><code>order_type</code> (Text): The type of order we are fulfilling</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="equipment">Equipment</h4>
+<p>Throughout production, different equipment is used. Typically in a production environment we wish to keep track of the equipment used. This is what the <code>Equipment</code> table is for.</p>
+<p>Each <code>Equipment</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): Name of equipment</li>
+<li><code>number</code> (Integer): Equipment number (in case there are more than one of the same equipment)</li>
+<li><code>calibration_ts</code> (Date &amp; Time): Date and time of when the equipment was last calibrated</li>
+<li><code>parent</code> (<code>Equipment</code>): The parent equipment (this will be empty if this is the top assembly)</li>
+<li><code>status</code> (Text): This field is meant to show if the equipment is being used, in calibration, or is free to use</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h3 id="production-tables">Production Tables</h3>
+<h4 id="production-step-model">Production Step Model</h4>
+<p>Assembly and testing of hardware does not happen in a single step! The <code>ProductionStepModel</code> table is meant to hold all of the steps required for any assembly, repair, calibration or service procedure. Similarly to <code>HardwareModel</code>, it contains all of the entries that the production steps will refer to.</p>
+<p>Each <code>ProductionStepModel</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the production step model</li>
+<li><code>parent</code> (<code>ProductionStepModel</code>): The parent step model (so sub-steps can be added if necessary)</li>
+<li><code>version</code> (<code>Version</code>): The version of this step model entry</li>
+<li><code>step_number</code> (Integer): The step number (so that the order of each entry can be saved)</li>
+<li><code>optional</code> (Boolean): Marker if the step is optional or not</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="production-step">Production Step</h4>
+<p>The <code>ProductionStep</code> table is meant to store all of the production steps that actually happened. This allows the production team to keep track of where each piece of hardware that is being built is, and what progress is being made.</p>
+<p>Each <code>ProductionStep</code> entry stores the following data:</p>
+<ul>
+<li><code>order</code> (<code>Order</code>): The order of the hardware in question</li>
+<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this production step refers to</li>
+<li><code>status</code> (Text): The current status of this production step</li>
+<li><code>operator</code> (<code>User</code>): The operator executing this step</li>
+<li><code>start_ts</code> (Date &amp; Time): The date and time of when this production step was started</li>
+<li><code>end_ts</code> (Date &amp; Time): The date and time of when this production step was completed</li>
+</ul>
+<h4 id="configuration">Configuration</h4>
+<p>As with any automated handling of hardware, the configuration of an assembly tool, testing jig, or other material can have different configurations set. This is what the <code>Configuration</code> table is meant to store.</p>
+<p>Each <code>Configuration</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the configuration</li>
+<li><code>parent</code> (<code>Configuration</code> ): The parent configuration</li>
+<li><code>value</code> (<code>Value</code>): The value of the configuration</li>
+<li><code>hardware_model</code> (<code>HardwareModel</code>): The hardware model that this configuration applies to</li>
+<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this configuration applies to</li>
+<li><code>version</code> (<code>Version</code>): The version of the configuration</li>
+<li><code>description</code> (Text): Description of the configuration</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h3 id="testing-tables">Testing Tables</h3>
+<p>Throughout production, various tests are run on the hardware in question to ensure a certain level of quality specified by the intended customer. The tables below are meant to store this data as well as any non-compliances that can come up.</p>
+<h4 id="measurement">Measurement</h4>
+<p>The purpose of this table is self-explanatory (it stores the measurements taken on a specific piece of hardware).</p>
+<p>Each <code>Measurement</code> entry stores the following data:</p>
+<ul>
+<li><code>parent</code> (<code>Measurement</code>): The parent measurement</li>
+<li><code>name</code> (Text): The name of the measurement</li>
+<li><code>value</code> (Value): The value of the measurement</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>production_step</code> (<code>ProductionStep</code>): The production step in which this measurement was taken</li>
+</ul>
+<h4 id="specification">Specification</h4>
+<p>Each measurement that is taken is usually compared with a pre-defined specification, which is what the <code>Specification</code> table stores.</p>
+<p>Each <code>Specification</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the specification</li>
+<li><code>valid_range</code> (<code>Range</code>): The range in which we consider a measurement to be valid</li>
+<li><code>applicable_scope</code> (<code>Range</code>): The range in which we would want to check if a measurement is within the valid range</li>
+<li><code>hardware_model</code> (<code>HardwareModel</code>): The hardware to which the specification applies to</li>
+<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that the specification applies to</li>
+<li><code>group</code> (<code>SpecificationGroup</code>): The specification group that this specification belongs to</li>
+<li><code>description</code> (Text): Description of this specification</li>
+<li><code>severity</code> (Text): How important this specification is</li>
+<li><code>version</code> (<code>Version</code>): The version of this specification</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="specification-group">Specification Group</h4>
+<p>As many specifications can be defined and are typically linked together, the <code>SpecificationGroup</code> table allows the data owner to create different groups to link each specification together.</p>
+<p>Each <code>SpecificationGroup</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the group</li>
+<li><code>commencement_date</code> (Date &amp; Time): The date and time that this group's specifications come into effect</li>
+<li><code>expiration_date</code> (Date &amp; Time): The date and time that this group's specifications expire</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="result">Result</h4>
+<p>Typically, each raw measurement (or a group of measurements) is processed into a resulting value, which is then compared with a list of specifications. The <code>Result</code> table is meant to hold onto this processed data.</p>
+<p>Each <code>Result</code> entry stores the following data:</p>
+<ul>
+<li><code>parent</code> (<code>Result</code>): The parent result</li>
+<li><code>name</code> (Text): The name of the result</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>measurements</code> (<code>Measurement</code> - Many-to-Many): List of measurements this result was computed from</li>
+<li><code>specification</code> (<code>Specification</code>): The specification that this result should satisfy</li>
+<li><code>value</code> (Value): The value of this result</li>
+<li><code>processor</code> (<code>Processor</code>): The processor (that took the input measurements and computed this result)</li>
+</ul>
+<h4 id="non-compliance">Non-Compliance</h4>
+<p>A non-compliance (or NC for short) is created when a result does not meet a specification. The <code>NonCompliance</code> table holds all of these entries.</p>
+<p>Each <code>NonCompliance</code> entry stores the following data:</p>
+<ul>
+<li><code>result</code> (<code>Result</code>): The associated result</li>
+<li><code>status</code> (Text): Indicator to mark if the non-compliance has been resolved, is under review, being resolved, etc.</li>
+<li><code>decision</code> (Text): Text describing the decision made (preferably including the reason why) (mostly for documentation purposes)</li>
+<li><code>reporter</code> (<code>User</code>): The user that reported the non-compliance</li>
+<li><code>signer</code> (<code>User</code>): The user that signed to make the final decision on the non-compliance</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>close_ts</code> (Date &amp; Time): When the non-compliance was closed</li>
+</ul>
+<h4 id="non-compliance-comment">Non-Compliance Comment</h4>
+<p>Every non-compliance would usualy spark a new discussion. This table is meant to hold the comments made on an NC.</p>
+<p>Each <code>NonComplianceComment</code> entry stores the following data:</p>
+<ul>
+<li><code>parent</code> (<code>NonComplianceComment</code>): The parent comment (if it exists)</li>
+<li><code>non_compliance</code> (<code>NonCompliance</code>): The non-compliance entry that this comment refers to</li>
+<li><code>author</code> (<code>User</code>): The author of the comment</li>
+<li><code>content</code> (Text): The content of the comment</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+</ul>
+<h4 id="processor">Processor</h4>
+<p>As each measurement (or multiple measurements) might need to be post-processed into a result, the <code>Processor</code> table keeps track of the different post-processing scripts and actions that are taken for each measurement.</p>
+<p>Each <code>Processor</code> entry contains the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the processor</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>version</code> (<code>Version</code>): The version of the processor</li>
+<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this processor refers to</li>
+<li><code>file_path</code> (File path): The file path of the post-processing script</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
