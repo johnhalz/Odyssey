@@ -2,7 +2,7 @@ site_name: Odyssey Documentation
 
 theme:
   name: material
-  logo: media/Logo/Mono_White.svg
+  logo: ./media/Logo/Mono_White.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

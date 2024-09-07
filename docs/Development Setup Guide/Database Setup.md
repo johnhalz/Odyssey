@@ -12,4 +12,4 @@ You can set the password to the database by setting the `POSTGRES_PASSWORD` fiel
 
     If you change the value of `POSTGRES_PASSWORD`, you will also need to edit this value in the `Odyssey/settings.py` file (lines 79 - 88).
 
-Now that you have your database, you can move onto setting up your [python development environment](Python%20Environment%20Setup.md)!
+Now that you have your database, you can move onto setting up your [python development environment](./Python%20Environment%20Setup.md)!
