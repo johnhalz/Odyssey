@@ -2,7 +2,7 @@ site_name: Odyssey Documentation
 
 theme:
   name: material
-  logo: ./media/Logo/Mono_White.svg
+  logo: bootstrap/logo
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -40,6 +40,12 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
 
 extra_javascript:
   - javascripts/mathjax.js
