@@ -7,7 +7,7 @@ To install python on your machine, it is recommended to use [pyenv](https://gith
 
 After having installed pyenv, you can install a specific version on your machine by running:
 
-``` bash
+``` sh
 pyenv install 3.11.7
 ```
 
@@ -21,7 +21,7 @@ For creating a virtual environment, we recommend to use [poetry](https://python-
 
 After having installed Poetry on your system, it is highly recommended to enable the [`virtualenvs.in-project` configuration option](https://python-poetry.org/docs/configuration/#virtualenvsin-project). You can do this by running the following command:
 
-``` bash
+``` sh
 poetry config virtualenvs.in-project true
 ```
 
@@ -31,14 +31,14 @@ This will make Poetry create `.venv` files in the project folder, making it much
 
 After having cloned this repo, you can install all dependencies and create a virtual environment by just running the command:
 
-``` bash
+``` sh
 cd <path-to-odyssey-folder>
 poetry install --group dev
 ```
 
 This will install all required dependencies (listed in the `pyproject.toml` file).
 
-All that’s left now is to add the seed data to the database!
+All that’s left now is to add the [seed data to the database](Making%20Migrations%20&%20Adding%20Seed%20Data.md)!
 
 ----
 

@@ -25,6 +25,7 @@ y = \frac{\left(x + x_{offset} \right) \cdot multiplicand}{denominator} + y_{off
 $$
 
 Each `Unit` entry stores the following data:
+
 - `name` (Text): The name of the unit
 - `plural_name` (Text): The plural name of the unit
 - `space_after_value` (Boolean): This field specifies if a space should be added between the value and the unit when printing the quantity (value and unit)
