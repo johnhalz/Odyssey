@@ -90,8 +90,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Odyssey Documentation" class="md-header__button md-logo" aria-label="Odyssey Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../media/Logo/Mono_White.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -213,8 +212,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Odyssey Documentation" class="md-nav__button md-logo" aria-label="Odyssey Documentation" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../media/Logo/Mono_White.svg" alt="logo">
 
     </a>
     Odyssey Documentation
@@ -1160,17 +1158,19 @@ Each <code>UnitType</code> entry contains the following data:</p>
 <div class="arithmatex">\[
 y = \frac{\left(x + x_{offset} \right) \cdot multiplicand}{denominator} + y_{offset}
 \]</div>
-<p>Each <code>Unit</code> entry stores the following data:
-- <code>name</code> (Text): The name of the unit
-- <code>plural_name</code> (Text): The plural name of the unit
-- <code>space_after_value</code> (Boolean): This field specifies if a space should be added between the value and the unit when printing the quantity (value and unit)
-- <code>base_unit</code> (<code>Unit</code>): Link to the base unit of the unit type (will be null if the entry is the base unit)
-- <code>abbreviation</code> (Text): Unit abbreviation
-- <code>create_ts</code> (Date &amp; Time): When this entry was created
-- <code>x_offset</code> (Decimal): value
-- <code>y_offset</code> (Decimal): value
-- <code>multiplicand</code> (Decimal): value
-- <code>denominator</code> (Decimal): value</p>
+<p>Each <code>Unit</code> entry stores the following data:</p>
+<ul>
+<li><code>name</code> (Text): The name of the unit</li>
+<li><code>plural_name</code> (Text): The plural name of the unit</li>
+<li><code>space_after_value</code> (Boolean): This field specifies if a space should be added between the value and the unit when printing the quantity (value and unit)</li>
+<li><code>base_unit</code> (<code>Unit</code>): Link to the base unit of the unit type (will be null if the entry is the base unit)</li>
+<li><code>abbreviation</code> (Text): Unit abbreviation</li>
+<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
+<li><code>x_offset</code> (Decimal): value</li>
+<li><code>y_offset</code> (Decimal): value</li>
+<li><code>multiplicand</code> (Decimal): value</li>
+<li><code>denominator</code> (Decimal): value</li>
+</ul>
 <h4 id="value">Value</h4>
 <p>As multiple different types of values can be stored (strings, integers, decimal numbers and array), the <code>Value</code> table offers a single point where users can access this data. We have created this table so that developers that interact with Odyssey and its APIs have a high-performance (database-level) access point to values of any type (hence removing any logic that would required to check the desired type before querying the database). This can become very useful when searching for values, and is already used within the Odyssey database when another table links to a value.</p>
 <p>Each <code>Value</code> entry is automatically created in the database when a new <code>String</code>, <code>Integer</code>, <code>Decimal</code> or <code>Array</code> is created and each <code>Value</code> entry contains the following data:</p>
