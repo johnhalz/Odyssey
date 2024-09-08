@@ -13,7 +13,7 @@
 - _Coming Soon:_ View live data of your production line anywhere with websockets
 
 ## Documentation
-Full documentation of this prject can now be found on our new [confluence page](https://halo-engineering.atlassian.net/wiki/spaces/Odyssey/overview?homepageId=229492)!
+Full documentation of this prject can now be found on our new [documentation page](https://johnhalz.github.io/Odyssey)!
 
 ## Table of Contents
 - [Quick Start](#quick-start)
