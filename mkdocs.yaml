@@ -7,7 +7,8 @@ copyright: Copyright &copy; 2024 John Halazonetis
 
 theme:
   name: material
-  logo: img/logo.svg
+  logo: img/logo_white.svg
+  favicon: img/logo.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -24,6 +25,9 @@ theme:
   features:
     - search.suggest
     - content.tabs.link
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
 
 plugins:
   - search
