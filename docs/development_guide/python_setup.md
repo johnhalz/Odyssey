@@ -38,7 +38,7 @@ poetry install --group dev
 
 This will install all required dependencies (listed in the `pyproject.toml` file).
 
-All that’s left now is to add the [seed data to the database](./Making%20Migrations%20&%20Adding%20Seed%20Data.md)!
+All that’s left now is to add the [seed data to the database](./migrations.md)!
 
 ----
 

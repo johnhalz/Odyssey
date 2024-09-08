@@ -30,4 +30,4 @@ python manage.py loaddata values_and_units/fixtures/unit_types.json
 python manage.py loaddata values_and_units/fixtures/units.json
 ```
 
-After [setting up a superuser account and accessing the admin page](./Running%20Server%20&%20Creating%20an%20Admin%20Account.md), you will be able to see the [seed data](./Making%20Migrations%20&%20Adding%20Seed%20Data.md) in their respective tables in the admin page.
+After [setting up a superuser account and accessing the admin page](./running_first_time.md), you will be able to see the [seed data](./migrations.md) in their respective tables in the admin page.
