@@ -62,3 +62,15 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/johnhalz/Odyssey
+
+nav:
+  - Introduction: "index.md"
+  - Database:
+      - Database Schema: "database/schema.md"
+  - API:
+      - API Usage: "api/usage.md"
+  - Development Setup Guide:
+      - Database Setup: "development_guide/database_setup.md"
+      - Python Environment Setup: "development_guide/python_setup.md"
+      - Making Migrations & Adding Seed Data: "development_guide/migrations.md"
+      - Running Server & Creating an Admin Account: "development_guide/running_first_time.md"
