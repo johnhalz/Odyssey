@@ -1,5 +1,5 @@
 <p align="center" style="margin-bottom: 0px !important;">
-  <img width="200" src="media/Logo/Blue_Icon.svg" alt="Odyssey Logo" align="center">
+  <img width="200" src="docs/img/logo.svg" alt="Odyssey Logo" align="center">
 </p>
 <h1 align="center" style="margin-top: 0px;">Odyssey</h1>
 
