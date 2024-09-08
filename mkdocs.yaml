@@ -67,7 +67,7 @@ nav:
   - Database:
       - Database Schema: "database/schema.md"
   - API:
-      - API Usage: "api/usage.md"
+      - API Usage: "api_docs/usage.md"
   - Development Setup Guide:
       - Database Setup: "development_guide/database_setup.md"
       - Python Environment Setup: "development_guide/python_setup.md"
