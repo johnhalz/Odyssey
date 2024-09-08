@@ -4,7 +4,7 @@
 
 You can run the server with the command:
 
-``` bash
+``` sh
 python manage.py runserver
 ```
 
@@ -14,7 +14,7 @@ This command will output the address from which you can access Odyssey on your b
 
 To access the admin page on your local deployment, go to http://127.0.0.1:8000/admin. You will need to create a login to be able to login, which you can do by running the command:
 
-``` bash
+``` sh
 python manage.py createsuperuser
 ```
 

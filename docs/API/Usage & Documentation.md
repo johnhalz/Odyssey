@@ -4,7 +4,8 @@ Odyssey has an extensive REST API that gives developers the ability to integrate
 
 ## Usage the API in Other Languages
 
-Currently, there are no existing packages that can be easily downloaded that interface with Odyssey’s API. Packages for the following languages are planned for development though:
+Currently, there are no existing packages that can be easily downloaded that interface with Odyssey’s API. They are coming soon though! Packages for the following languages are planned for development though:
 
 - Python
 - Swift
+- Rust

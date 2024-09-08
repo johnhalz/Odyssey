@@ -1,7 +1,14 @@
 site_name: Odyssey Documentation
 
+repo_url: https://github.com/johnhalz/Odyssey
+repo_name: johnhalz/Odyssey
+
+copyright: Copyright &copy; 2024 John Halazonetis
+
 theme:
   name: material
+  logo: img/logo_white.svg
+  favicon: img/logo.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -13,9 +20,14 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
   features:
     - search.suggest
     - content.tabs.link
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
 
 plugins:
   - search
@@ -44,3 +56,8 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/johnhalz/Odyssey
