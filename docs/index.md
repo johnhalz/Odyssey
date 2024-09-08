@@ -10,6 +10,7 @@ Odyssey is a proposal for a modern database structure for hardware production. T
 - Keep track of defined specifications and non-compliances
 
 ## Main Categories
+
 - [Development Setup Guide](./development_guide/database_setup.md)
 - [Database Structure](./database/schema.md)
 - [API Usage & Documentation](./api_docs/usage.md)
