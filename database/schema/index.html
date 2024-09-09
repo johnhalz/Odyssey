@@ -1177,245 +1177,942 @@
 <h4 id="unit-type">Unit Type</h4>
 <p>This table defines the different types of units that are stored in the Unit table.
 Each <code>UnitType</code> entry contains the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the unit type</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the unit type</td>
+</tr>
+</tbody>
+</table>
 <h4 id="unit">Unit</h4>
 <p>As its name implies, the <code>Unit</code> table stores all of the units along with their conversion factors. To simplify unit conversion, we define a base unit for each unit type. For each unit, we then define the factors to convert from that unit back to the base unit. We use the following formula to convert a value in an arbitrary unit <span class="arithmatex">\(x\)</span> to a value <span class="arithmatex">\(y\)</span> in the base unit:</p>
 <div class="arithmatex">\[
 y = \frac{\left(x + x_{offset} \right) \cdot multiplicand}{denominator} + y_{offset}
 \]</div>
-<p>Each <code>Unit</code> entry stores the following data:
-- <code>name</code> (Text): The name of the unit
-- <code>plural_name</code> (Text): The plural name of the unit
-- <code>space_after_value</code> (Boolean): This field specifies if a space should be added between the value and the unit when printing the quantity (value and unit)
-- <code>base_unit</code> (<code>Unit</code>): Link to the base unit of the unit type (will be null if the entry is the base unit)
-- <code>abbreviation</code> (Text): Unit abbreviation
-- <code>create_ts</code> (Date &amp; Time): When this entry was created
-- <code>x_offset</code> (Decimal): value
-- <code>y_offset</code> (Decimal): value
-- <code>multiplicand</code> (Decimal): value
-- <code>denominator</code> (Decimal): value</p>
+<p>Each <code>Unit</code> entry stores the following data:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the unit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>plural_name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The plural name of the unit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>space_after_value</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;">Specifies if a space should be added between the value and the unit when printing the quantity (value and unit)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>base_unit</code></td>
+<td style="text-align: left;"><code>Unit</code></td>
+<td style="text-align: left;">Link to the base unit of the unit type (will be null if the entry is the base unit)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>abbreviation</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Unit abbreviation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>x_offset</code></td>
+<td style="text-align: left;">Decimal</td>
+<td style="text-align: left;">Value of <span class="arithmatex">\(x_{offset}\)</span> compared to base unit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>y_offset</code></td>
+<td style="text-align: left;">Decimal</td>
+<td style="text-align: left;">Value of <span class="arithmatex">\(y_{offset}\)</span> compared to base unit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>multiplicand</code></td>
+<td style="text-align: left;">Decimal</td>
+<td style="text-align: left;">Value of <span class="arithmatex">\(multiplicand\)</span> compared to base unit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>denominator</code></td>
+<td style="text-align: left;">Decimal</td>
+<td style="text-align: left;">Value of <span class="arithmatex">\(denominator\)</span> compared to base unit</td>
+</tr>
+</tbody>
+</table>
 <h4 id="value">Value</h4>
 <p>As multiple different types of values can be stored (strings, integers, decimal numbers and array), the <code>Value</code> table offers a single point where users can access this data. We have created this table so that developers that interact with Odyssey and its APIs have a high-performance (database-level) access point to values of any type (hence removing any logic that would required to check the desired type before querying the database). This can become very useful when searching for values, and is already used within the Odyssey database when another table links to a value.</p>
 <p>Each <code>Value</code> entry is automatically created in the database when a new <code>String</code>, <code>Integer</code>, <code>Decimal</code> or <code>Array</code> is created and each <code>Value</code> entry contains the following data:</p>
-<ul>
-<li><code>content_type</code>: The type of content that the entry is linking to (needed for database logic)</li>
-<li><code>object_id</code> (Integer): The id of the object we are linking to</li>
-<li><code>content_object</code>: This is the content of the object (this is what developers would need to access through this table)</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>content_type</code></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">The type of content that the entry is linking to (needed for database logic)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>object_id</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The id of the object we are linking to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>content_object</code></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">This is the content of the object (this is what developers would need to access through this table)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="string">String</h4>
 <p>The <code>String</code> table contains all of the stored strings that are to be used as values. While using strings for containing numerical values is discouraged (there are specific tables for this). The odd case can still arise where a string is the only possible usable type.</p>
 <p>Each <code>String</code> entry stores the following data:</p>
-<ul>
-<li><code>string</code> (Text): The text of the string</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The text of the string</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">The value that the entry is linked to</td>
+</tr>
+</tbody>
+</table>
 <h4 id="integer">Integer</h4>
 <p>The <code>Integer</code> table stores integer values that can be linked to a unit (although this is optional).</p>
 <p>Each <code>Integer</code> entry stores the following data:</p>
-<ul>
-<li><code>integer</code> (Integer): Integer value</li>
-<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>integer</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Integer value</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>unit</code></td>
+<td style="text-align: left;"><code>Unit</code></td>
+<td style="text-align: left;">A linked unit (can be left blank)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">The value that the entry is linked to</td>
+</tr>
+</tbody>
+</table>
 <h4 id="decimal">Decimal</h4>
 <p>The <code>Decimal</code> table stores any float number that can be linked to a unit (although this is optional).</p>
 <p>Each <code>Decimal</code> entry stores the following data:</p>
-<ul>
-<li><code>decimal</code> (Float): The decimal number's value</li>
-<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>decimal</code></td>
+<td style="text-align: left;">Float</td>
+<td style="text-align: left;">The decimal number's value</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>unit</code></td>
+<td style="text-align: left;"><code>Unit</code></td>
+<td style="text-align: left;">A linked unit (can be left blank)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">The value that the entry is linked to</td>
+</tr>
+</tbody>
+</table>
 <h4 id="array">Array</h4>
 <p>The <code>Array</code> table stores any array of numbers that can be linked to a unit (although this is optional).</p>
 <p>Each <code>Array</code> entry stores the following data:</p>
-<ul>
-<li><code>array</code> (<code>Array[Float]</code>): The array value</li>
-<li><code>unit</code> (<code>Unit</code>): A linked unit (can be left blank)</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>value</code> (<code>Value</code>): The value that the entry is connected to</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>array</code></td>
+<td style="text-align: left;"><code>Array[Float]</code></td>
+<td style="text-align: left;">The array value</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>unit</code></td>
+<td style="text-align: left;"><code>Unit</code></td>
+<td style="text-align: left;">A linked unit (can be left blank)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">The value that the entry is linked to</td>
+</tr>
+</tbody>
+</table>
 <h4 id="version">Version</h4>
 <p>As configurations, software and hardware typically have versions assigned to them, we create a <code>Version</code> table to store all of these versions. We enforce the use of semantic versioning numbers with major, minor and patch number values.</p>
 <p>Each <code>Version</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): An associated name of the version</li>
-<li><code>major</code> (Integer): The major version number</li>
-<li><code>minor</code> (Integer): The minor version number</li>
-<li><code>patch</code> (Integer): The patch version number</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>description</code> (Text): An optional description of the version</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">An associated name of the version</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>major</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The major version number</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>minor</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The minor version number</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>patch</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The patch version number</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>description</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">An optional description of the version</td>
+</tr>
+</tbody>
+</table>
 <h4 id="range">Range</h4>
 <p>Typically when defining specifications, different ranges are defined that give a minimum and maximum bounds to the spec. The <code>Range</code> table is meant to hold such data.</p>
 <p>Each <code>Range</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): Name of the range</li>
-<li><code>lower</code> (<code>Value</code>): Lower value</li>
-<li><code>upper</code> (<code>Value</code>): Upper value</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Name of the range</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lower</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">Lower value</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>upper</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">Upper value</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h3 id="hardware-tables">Hardware Tables</h3>
 <h4 id="hardware-model">Hardware Model</h4>
 <p>The <code>HardwareModel</code> table is meant to store the model of the assembled hardware. It is meant to store the assembly logic (which part goes where, and where different sub-assemblies are).</p>
 <p>Each <code>HardwareModel</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the hardware in question</li>
-<li><code>position</code> (Text): The position of the hardware in its assembly</li>
-<li><code>parent</code> (<code>HardwareModel</code>): The parent assembly (this will be empty if this is the top assembly)</li>
-<li><code>version</code> (<code>Version</code>): The version of this part</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Name of the hardware</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>position</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The position of the hardware in its assembly</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>HardwareModel</code></td>
+<td style="text-align: left;">The parent assembly (this will be empty if this is the top assembly)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;"><code>Version</code></td>
+<td style="text-align: left;">The version of this entry</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="hardware">Hardware</h4>
 <p>The <code>Hardware</code> table is meant to store all of the instances of physical hardware that were built. Each <code>Hardware</code> element is meant to reference a <code>HardwareModel</code> entry.</p>
 <p>Each <code>Hardware</code> entry stores the following data:</p>
-<ul>
-<li><code>serial_number</code> (Text): The serial number (or part number) of the hardware</li>
-<li><code>model</code> (<code>HardwareModel</code>): The hardware model the this entry references</li>
-<li><code>set</code> (Integer): The set in which this entry belongs</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>serial_number</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The serial number (or part number) of the hardware</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>model</code></td>
+<td style="text-align: left;"><code>HardwareModel</code></td>
+<td style="text-align: left;">The hardware model the this entry references</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>set</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The set in which this entry belongs (can be left blank)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="order">Order</h4>
 <p>As hardware can be treated in different ways in production, (initial build-up, repair, service, etc.), we create order numbers to keep track of the different types of treatment a piece of hardware with the same serial number can go through. We call these <code>Order</code> numbers.</p>
 <p>Each <code>Order</code> entry stores the following data:</p>
-<ul>
-<li><code>number</code> (Integer): Order number</li>
-<li><code>hardware</code> (<code>Hardware</code>): Link to the hardware in question</li>
-<li><code>order_type</code> (Text): The type of order we are fulfilling</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>number</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Order number</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hardware</code></td>
+<td style="text-align: left;"><code>Hardware</code></td>
+<td style="text-align: left;">Link to the hardware in question</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>order_type</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The type of order we are fulfilling</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="equipment">Equipment</h4>
 <p>Throughout production, different equipment is used. Typically in a production environment we wish to keep track of the equipment used. This is what the <code>Equipment</code> table is for.</p>
 <p>Each <code>Equipment</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): Name of equipment</li>
-<li><code>number</code> (Integer): Equipment number (in case there are more than one of the same equipment)</li>
-<li><code>calibration_ts</code> (Date &amp; Time): Date and time of when the equipment was last calibrated</li>
-<li><code>parent</code> (<code>Equipment</code>): The parent equipment (this will be empty if this is the top assembly)</li>
-<li><code>status</code> (Text): This field is meant to show if the equipment is being used, in calibration, or is free to use</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Name of the equipment</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>number</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Equipment number (in case there are more than one of the same equipment)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>calibration_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">Date and time of when the equipment was last calibrated</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>Equipment</code></td>
+<td style="text-align: left;">The parent equipment (this will be empty if this is the top assembly)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>status</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">This field is meant to show if the equipment is being used, in calibration, or is free to use</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h3 id="production-tables">Production Tables</h3>
 <h4 id="production-step-model">Production Step Model</h4>
 <p>Assembly and testing of hardware does not happen in a single step! The <code>ProductionStepModel</code> table is meant to hold all of the steps required for any assembly, repair, calibration or service procedure. Similarly to <code>HardwareModel</code>, it contains all of the entries that the production steps will refer to.</p>
 <p>Each <code>ProductionStepModel</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the production step model</li>
-<li><code>parent</code> (<code>ProductionStepModel</code>): The parent step model (so sub-steps can be added if necessary)</li>
-<li><code>version</code> (<code>Version</code>): The version of this step model entry</li>
-<li><code>step_number</code> (Integer): The step number (so that the order of each entry can be saved)</li>
-<li><code>optional</code> (Boolean): Marker if the step is optional or not</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the production step model</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>ProductionStepModel</code></td>
+<td style="text-align: left;">The parent step model (so sub-steps can be added if necessary)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;"><code>Version</code></td>
+<td style="text-align: left;">The version of this step model entry</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>step_number</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">The step number (so that the order of each entry can be saved)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>optional</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;">Marker if the step is optional or not</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="production-step">Production Step</h4>
 <p>The <code>ProductionStep</code> table is meant to store all of the production steps that actually happened. This allows the production team to keep track of where each piece of hardware that is being built is, and what progress is being made.</p>
 <p>Each <code>ProductionStep</code> entry stores the following data:</p>
-<ul>
-<li><code>order</code> (<code>Order</code>): The order of the hardware in question</li>
-<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this production step refers to</li>
-<li><code>status</code> (Text): The current status of this production step</li>
-<li><code>operator</code> (<code>User</code>): The operator executing this step</li>
-<li><code>start_ts</code> (Date &amp; Time): The date and time of when this production step was started</li>
-<li><code>end_ts</code> (Date &amp; Time): The date and time of when this production step was completed</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>order</code></td>
+<td style="text-align: left;"><code>Order</code></td>
+<td style="text-align: left;">The order of the hardware in question</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>production_step_model</code></td>
+<td style="text-align: left;"><code>ProductionStepModel</code></td>
+<td style="text-align: left;">The production step model that this production step refers to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>status</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The current status of this production step</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>operator</code></td>
+<td style="text-align: left;"><code>User</code></td>
+<td style="text-align: left;">The operator executing this step</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>start_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">The date and time of when this production step was started</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>end_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">The date and time of when this production step was completed</td>
+</tr>
+</tbody>
+</table>
 <h4 id="configuration">Configuration</h4>
 <p>As with any automated handling of hardware, the configuration of an assembly tool, testing jig, or other material can have different configurations set. This is what the <code>Configuration</code> table is meant to store.</p>
 <p>Each <code>Configuration</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the configuration</li>
-<li><code>parent</code> (<code>Configuration</code> ): The parent configuration</li>
-<li><code>value</code> (<code>Value</code>): The value of the configuration</li>
-<li><code>hardware_model</code> (<code>HardwareModel</code>): The hardware model that this configuration applies to</li>
-<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this configuration applies to</li>
-<li><code>version</code> (<code>Version</code>): The version of the configuration</li>
-<li><code>description</code> (Text): Description of the configuration</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>Configuration</code></td>
+<td style="text-align: left;">The parent configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>Value</code></td>
+<td style="text-align: left;">The value of the configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hardware_model</code></td>
+<td style="text-align: left;"><code>HardwareModel</code></td>
+<td style="text-align: left;">The hardware model that this configuration applies to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>production_step_model</code></td>
+<td style="text-align: left;"><code>ProductionStepModel</code></td>
+<td style="text-align: left;">The production step model that this configuration applies to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;"><code>Version</code></td>
+<td style="text-align: left;">The version of the configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>description</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Description of the configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h3 id="testing-tables">Testing Tables</h3>
 <p>Throughout production, various tests are run on the hardware in question to ensure a certain level of quality specified by the intended customer. The tables below are meant to store this data as well as any non-compliances that can come up.</p>
 <h4 id="measurement">Measurement</h4>
 <p>The purpose of this table is self-explanatory (it stores the measurements taken on a specific piece of hardware).</p>
 <p>Each <code>Measurement</code> entry stores the following data:</p>
-<ul>
-<li><code>parent</code> (<code>Measurement</code>): The parent measurement</li>
-<li><code>name</code> (Text): The name of the measurement</li>
-<li><code>value</code> (Value): The value of the measurement</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>production_step</code> (<code>ProductionStep</code>): The production step in which this measurement was taken</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>Measurement</code></td>
+<td style="text-align: left;">The parent measurement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the measurement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;">Value</td>
+<td style="text-align: left;">The value of the measurement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>production_step</code></td>
+<td style="text-align: left;"><code>ProductionStep</code></td>
+<td style="text-align: left;">The production step in which this measurement was taken</td>
+</tr>
+</tbody>
+</table>
 <h4 id="specification">Specification</h4>
 <p>Each measurement that is taken is usually compared with a pre-defined specification, which is what the <code>Specification</code> table stores.</p>
 <p>Each <code>Specification</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the specification</li>
-<li><code>valid_range</code> (<code>Range</code>): The range in which we consider a measurement to be valid</li>
-<li><code>applicable_scope</code> (<code>Range</code>): The range in which we would want to check if a measurement is within the valid range</li>
-<li><code>hardware_model</code> (<code>HardwareModel</code>): The hardware to which the specification applies to</li>
-<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that the specification applies to</li>
-<li><code>group</code> (<code>SpecificationGroup</code>): The specification group that this specification belongs to</li>
-<li><code>description</code> (Text): Description of this specification</li>
-<li><code>severity</code> (Text): How important this specification is</li>
-<li><code>version</code> (<code>Version</code>): The version of this specification</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the specification</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>valid_range</code></td>
+<td style="text-align: left;"><code>Range</code></td>
+<td style="text-align: left;">The range in which we consider a measurement to be valid</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>applicable_scope</code></td>
+<td style="text-align: left;"><code>Range</code></td>
+<td style="text-align: left;">The range in which we would want to check if a measurement is within the valid range</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hardware_model</code></td>
+<td style="text-align: left;"><code>HardwareModel</code></td>
+<td style="text-align: left;">The hardware to which the specification applies to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>production_step_model</code></td>
+<td style="text-align: left;"><code>ProductionStepModel</code></td>
+<td style="text-align: left;">The production step model that the specification applies to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>group</code></td>
+<td style="text-align: left;"><code>SpecificationGroup</code></td>
+<td style="text-align: left;">The specification group that this specification belongs to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>description</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Description of this specification</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>severity</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">How important this specification is</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;"><code>Version</code></td>
+<td style="text-align: left;">The version of this specification</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="specification-group">Specification Group</h4>
 <p>As many specifications can be defined and are typically linked together, the <code>SpecificationGroup</code> table allows the data owner to create different groups to link each specification together.</p>
 <p>Each <code>SpecificationGroup</code> entry stores the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the group</li>
-<li><code>commencement_date</code> (Date &amp; Time): The date and time that this group's specifications come into effect</li>
-<li><code>expiration_date</code> (Date &amp; Time): The date and time that this group's specifications expire</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the group</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>commencement_date</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">The date and time that this group's specifications come into effect</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>expiration_date</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">The date and time that this group's specifications expire</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="result">Result</h4>
 <p>Typically, each raw measurement (or a group of measurements) is processed into a resulting value, which is then compared with a list of specifications. The <code>Result</code> table is meant to hold onto this processed data.</p>
 <p>Each <code>Result</code> entry stores the following data:</p>
-<ul>
-<li><code>parent</code> (<code>Result</code>): The parent result</li>
-<li><code>name</code> (Text): The name of the result</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>measurements</code> (<code>Measurement</code> - Many-to-Many): List of measurements this result was computed from</li>
-<li><code>specification</code> (<code>Specification</code>): The specification that this result should satisfy</li>
-<li><code>value</code> (Value): The value of this result</li>
-<li><code>processor</code> (<code>Processor</code>): The processor (that took the input measurements and computed this result)</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>Result</code></td>
+<td style="text-align: left;">The parent result</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the result</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>measurements</code></td>
+<td style="text-align: left;"><code>Measurement</code> (Many-to-Many)</td>
+<td style="text-align: left;">List of measurements this result was computed from</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>specification</code></td>
+<td style="text-align: left;"><code>Specification</code></td>
+<td style="text-align: left;">The specification that this result should satisfy</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;">Value</td>
+<td style="text-align: left;">The value of this result</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>processor</code></td>
+<td style="text-align: left;"><code>Processor</code></td>
+<td style="text-align: left;">The processor (that took the input measurements and computed this result)</td>
+</tr>
+</tbody>
+</table>
 <h4 id="non-compliance">Non-Compliance</h4>
 <p>A non-compliance (or NC for short) is created when a result does not meet a specification. The <code>NonCompliance</code> table holds all of these entries.</p>
 <p>Each <code>NonCompliance</code> entry stores the following data:</p>
-<ul>
-<li><code>result</code> (<code>Result</code>): The associated result</li>
-<li><code>status</code> (Text): Indicator to mark if the non-compliance has been resolved, is under review, being resolved, etc.</li>
-<li><code>decision</code> (Text): Text describing the decision made (preferably including the reason why) (mostly for documentation purposes)</li>
-<li><code>reporter</code> (<code>User</code>): The user that reported the non-compliance</li>
-<li><code>signer</code> (<code>User</code>): The user that signed to make the final decision on the non-compliance</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>close_ts</code> (Date &amp; Time): When the non-compliance was closed</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>result</code></td>
+<td style="text-align: left;"><code>Result</code></td>
+<td style="text-align: left;">The associated result</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>status</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Indicator to mark if the non-compliance has been resolved, is under review, being resolved, etc.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>decision</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">Text describing the decision made (preferably including the reason why) (mostly for documentation purposes)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reporter</code></td>
+<td style="text-align: left;"><code>User</code></td>
+<td style="text-align: left;">The user that reported the non-compliance</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>signer</code></td>
+<td style="text-align: left;"><code>User</code></td>
+<td style="text-align: left;">The user that signed to make the final decision on the non-compliance</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>close_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When the non-compliance was closed</td>
+</tr>
+</tbody>
+</table>
 <h4 id="non-compliance-comment">Non-Compliance Comment</h4>
 <p>Every non-compliance would usualy spark a new discussion. This table is meant to hold the comments made on an NC.</p>
 <p>Each <code>NonComplianceComment</code> entry stores the following data:</p>
-<ul>
-<li><code>parent</code> (<code>NonComplianceComment</code>): The parent comment (if it exists)</li>
-<li><code>non_compliance</code> (<code>NonCompliance</code>): The non-compliance entry that this comment refers to</li>
-<li><code>author</code> (<code>User</code>): The author of the comment</li>
-<li><code>content</code> (Text): The content of the comment</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>parent</code></td>
+<td style="text-align: left;"><code>NonComplianceComment</code></td>
+<td style="text-align: left;">The parent comment (if it exists)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>non_compliance</code></td>
+<td style="text-align: left;"><code>NonCompliance</code></td>
+<td style="text-align: left;">The non-compliance entry that this comment refers to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>author</code></td>
+<td style="text-align: left;"><code>User</code></td>
+<td style="text-align: left;">The author of the comment</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>content</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The content of the comment</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+</tbody>
+</table>
 <h4 id="processor">Processor</h4>
 <p>As each measurement (or multiple measurements) might need to be post-processed into a result, the <code>Processor</code> table keeps track of the different post-processing scripts and actions that are taken for each measurement.</p>
 <p>Each <code>Processor</code> entry contains the following data:</p>
-<ul>
-<li><code>name</code> (Text): The name of the processor</li>
-<li><code>create_ts</code> (Date &amp; Time): When this entry was created</li>
-<li><code>version</code> (<code>Version</code>): The version of the processor</li>
-<li><code>production_step_model</code> (<code>ProductionStepModel</code>): The production step model that this processor refers to</li>
-<li><code>file_path</code> (File path): The file path of the post-processing script</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">Text</td>
+<td style="text-align: left;">The name of the processor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>create_ts</code></td>
+<td style="text-align: left;">Date &amp; Time</td>
+<td style="text-align: left;">When this entry was created</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;"><code>Version</code></td>
+<td style="text-align: left;">The version of the processor</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>production_step_model</code></td>
+<td style="text-align: left;"><code>ProductionStepModel</code></td>
+<td style="text-align: left;">The production step model that this processor refers to</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>file_path</code></td>
+<td style="text-align: left;">File path</td>
+<td style="text-align: left;">The file path of the post-processing script</td>
+</tr>
+</tbody>
+</table>
 
 
 
